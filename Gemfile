@@ -34,8 +34,8 @@ gem "cancan"
 ##upload_file
 gem "paperclip"
 
-gem "magic_admin", :git => "git@github.com:nioteam/magic_admin.git", :branch => "bootstrap"
-gem "magic_content", :git => "git@github.com:nioteam/magic_content.git"
+#gem "magic_admin", :git => "git@github.com:nioteam/magic_admin.git", :branch => "bootstrap"
+#gem "magic_content", :git => "git@github.com:nioteam/magic_content.git"
 #gem "rvm-capistrano"
 #gem "capistrano-unicorn"
 
