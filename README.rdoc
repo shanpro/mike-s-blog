@@ -1,0 +1,9 @@
+1. git clone ssep to your_app_path
+2. bundle
+3. touch database.yml & insert you database info
+4. rake db:create
+5. rake db:migrate
+6. rake db:seed
+7. rails s
+
+ENJOY :)

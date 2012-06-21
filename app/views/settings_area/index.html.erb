@@ -1,0 +1,53 @@
+<%= render partial: "shared/settingheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>用户设置</h2>
+        <ul>
+          <li><a href="#">兰芝</a></li>
+          <li><a href="#">梦妆</a></li>
+          <li><a href="#">雪花秀</a></li>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/settings_area/new">新增版块</a><a href="/settings_area">返回上级</a></span>
+        </div>
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">编号</th>
+            <th width="20%">版块名称</th>
+            <th width="20%">父级版块</th>
+            <th width="20%">版块模版</th>
+            <th width="10%">创建日期</th>
+            <th width="10%">状态</th>
+            <th class="border_rr" width="10%">操作</th>
+          </tr>
+
+          <%- (1..10).each do |index| %>
+          <tr>
+            <td><a href="#"><%= index %></a></td>
+            <td><a href="#">BA模版</a></td>
+            <td>无</td>
+            <td><a href="#">BA</a></td>
+            <td>2012-04-25</td>
+            <td>有效</td>
+            <td class="btn_operate"><a href="#">编辑</a><a href="#">关闭</a></td>
+          </tr>
+          <%- end -%>
+
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->

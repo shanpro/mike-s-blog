@@ -1,0 +1,137 @@
+// JavaScript Document
+$(function(){
+	
+/**********CALENDAR*********/  
+/**********CALENDAR*********/	
+	
+	
+var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		var calendar = $('#calendar').fullCalendar({
+			//theme: true, //Remove Comment For color theme
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			editable: true,
+			events: [
+				{
+					title: 'All Day Event',
+					start: new Date(y, m, 1),
+					url: '/calendars/show'
+				},
+				{
+					title: 'Long Event',
+					start: new Date(y, m, d-5),
+					end: new Date(y, m, d-2)
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d-3, 16, 0),
+					allDay: false
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d+4, 16, 0),
+					allDay: false
+				},
+				{
+					title: 'Meeting',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false
+				},
+				{
+					title: 'Lunch',
+					start: new Date(y, m, d, 12, 0),
+					end: new Date(y, m, d, 14, 0),
+					allDay: false
+				},
+				{
+					title: 'Birthday Party',
+					start: new Date(y, m, d+1, 19, 0),
+					end: new Date(y, m, d+1, 22, 30),
+					allDay: false
+				},
+				{
+					title: 'Click for Google',
+					start: new Date(y, m, 28),
+					end: new Date(y, m, 29),
+					url: 'http://google.com/'
+				}
+			]
+		});	
+	
+	
+
+
+	
+})
+
+
+
+//skin change================================
+/*
+ $(function option_change(){
+ 	//var $num = $("#li_select option").index("#li_select option:selected");
+ 	var $num = $("select#li_select option:selected").val();
+ 	//alert($num);
+ 	$("body").attr("id","skin" + $num);
+ 	$("#li_select").change(option_change);
+ })*/
+
+ $(function option_change(){
+ 	//var $num = $("#li_select option").index("#li_select option:selected");
+ 	var $num = $("select#li_select option:selected").val();
+ 	//alert($num);
+    $("body").attr("id","skin" + $num);
+ 	$("#li_select option").removeAttr("selected");
+ 	$("#li_select option").eq($num - 1).attr("selected","selected");
+ 	//alert($("#li_select option").eq($num - 1).attr());
+ 	$("#li_select").change(option_change);
+ })
+
+//popup
+popup=function(){
+	var $mar_left = $('.popup_box').outerWidth();
+	var $mar_top = $('.popup_box').outerHeight();
+	//alert($mar_left/2)
+	$('.popup_box').css({'margin-left':-$mar_left/2 + 'px','margin-top':-$mar_top/2 + 'px'});
+
+	$('.popup_box,.overlay').show();
+
+	$('.overlay').click(function(){
+		$(this).hide();
+		$('.popup_box').hide();
+	})
+	$('.close_btn').click(function(){
+		$('.popup_box').hide();
+		$('.overlay').hide();
+	})
+}
+
+$(function(){
+	$('.clik_review').click(popup);
+})

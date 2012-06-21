@@ -1,0 +1,235 @@
+GIT
+  remote: git@github.com:nioteam/magic_admin.git
+  revision: 32c70d030527a35d3fd46b3782f4ff7a32b1d6e3
+  branch: bootstrap
+  specs:
+    magic_admin (0.0.1)
+      cancan (= 1.6.7)
+      devise (= 2.0.2)
+      inherited_resources
+      rails (~> 3.2.1)
+      rails-settings-cached
+      simple_form (~> 2.0.0.rc)
+      twitter-bootstrap-rails
+
+GIT
+  remote: git@github.com:nioteam/magic_content.git
+  revision: e8454e7919cbc45abce7ceb3f0def106f16c28b5
+  specs:
+    magic_content (0.0.1)
+      acts-as-taggable-on
+      awesome_nested_set (~> 2.1.2)
+      fastercsv
+      inherited_resources
+      paperclip
+      rails (~> 3.2.1)
+
+GEM
+  remote: http://ruby.taobao.org/
+  specs:
+    actionmailer (3.2.3)
+      actionpack (= 3.2.3)
+      mail (~> 2.4.4)
+    actionpack (3.2.3)
+      activemodel (= 3.2.3)
+      activesupport (= 3.2.3)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      journey (~> 1.0.1)
+      rack (~> 1.4.0)
+      rack-cache (~> 1.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.1.2)
+    activemodel (3.2.3)
+      activesupport (= 3.2.3)
+      builder (~> 3.0.0)
+    activerecord (3.2.3)
+      activemodel (= 3.2.3)
+      activesupport (= 3.2.3)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
+    activeresource (3.2.3)
+      activemodel (= 3.2.3)
+      activesupport (= 3.2.3)
+    activesupport (3.2.3)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    acts-as-taggable-on (2.3.1)
+      rails (~> 3.0)
+    arel (3.0.2)
+    awesome_nested_set (2.1.3)
+      activerecord (>= 3.0.0)
+    awesome_print (1.0.2)
+    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
+    bond (0.4.2)
+    builder (3.0.0)
+    cancan (1.6.7)
+    capistrano (2.11.2)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    cocaine (0.2.1)
+    coffee-rails (3.2.2)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.3.3)
+    columnize (0.3.6)
+    commonjs (0.2.6)
+    debugger (1.1.3)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.2)
+    debugger-linecache (1.1.1)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.2)
+    devise (2.0.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.0.3)
+      railties (~> 3.1)
+      warden (~> 1.1)
+    erubis (2.7.0)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    fastercsv (1.5.5)
+    has_scope (0.5.1)
+    highline (1.6.12)
+    hike (1.2.1)
+    hirb (0.6.2)
+    i18n (0.6.0)
+    inherited_resources (1.3.1)
+      has_scope (~> 0.5.0)
+      responders (~> 0.6)
+    journey (1.0.3)
+    jquery-rails (2.0.2)
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
+    json (1.7.3)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
+    less (2.2.1)
+      commonjs (~> 0.2.6)
+    less-rails (2.2.3)
+      actionpack (>= 3.1)
+      less (~> 2.2.0)
+    libv8 (3.3.10.4)
+    mail (2.4.4)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    map_by_method (0.8.3)
+    mime-types (1.18)
+    multi_json (1.3.5)
+    mysql2 (0.3.11)
+    mysql2 (0.3.11-x86-mingw32)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.5.2)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
+    orm_adapter (0.0.7)
+    paperclip (3.0.4)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
+    polyglot (0.3.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
+    rack (1.4.1)
+    rack-cache (1.2)
+      rack (>= 0.4)
+    rack-ssl (1.3.2)
+      rack
+    rack-test (0.6.1)
+      rack (>= 1.0)
+    rails (3.2.3)
+      actionmailer (= 3.2.3)
+      actionpack (= 3.2.3)
+      activerecord (= 3.2.3)
+      activeresource (= 3.2.3)
+      activesupport (= 3.2.3)
+      bundler (~> 1.0)
+      railties (= 3.2.3)
+    rails-settings-cached (0.2.1)
+      rails (>= 3.0.0)
+    railties (3.2.3)
+      actionpack (= 3.2.3)
+      activesupport (= 3.2.3)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (~> 0.14.6)
+    rake (0.9.2.2)
+    rdoc (3.12)
+      json (~> 1.4)
+    responders (0.9.1)
+      railties (~> 3.1)
+    sass (3.1.19)
+    sass-rails (3.2.5)
+      railties (~> 3.2.0)
+      sass (>= 3.1.10)
+      tilt (~> 1.3)
+    simple_form (2.0.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+    sprockets (2.1.3)
+      hike (~> 1.2)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    therubyracer (0.10.1)
+      libv8 (~> 3.3.10)
+    thor (0.14.6)
+    tilt (1.3.3)
+    treetop (1.4.10)
+      polyglot
+      polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.1.0)
+      actionpack (>= 3.1)
+      less-rails (~> 2.2.2)
+      railties (>= 3.1)
+      therubyracer (~> 0.10.1)
+    tzinfo (0.3.33)
+    uglifier (1.2.4)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
+    warden (1.2.0)
+      rack (>= 1.0)
+    wirble (0.1.3)
+
+PLATFORMS
+  ruby
+  x86-mingw32
+
+DEPENDENCIES
+  awesome_print
+  bond
+  cancan
+  capistrano (= 2.11.2)
+  coffee-rails (~> 3.2.1)
+  debugger
+  devise
+  hirb
+  jquery-rails
+  json
+  kaminari
+  magic_admin!
+  magic_content!
+  map_by_method
+  mysql2
+  paperclip
+  quiet_assets
+  rails (= 3.2.3)
+  sass-rails (~> 3.2.3)
+  uglifier (>= 1.0.3)
+  wirble

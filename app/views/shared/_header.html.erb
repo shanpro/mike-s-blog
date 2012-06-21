@@ -1,0 +1,57 @@
+
+<div class="top">
+    <ul class="title group">
+        <li class="def_gray cur_tit"><a href="/"><span>Laneige SSEP</span> Bank</a></li>
+        <li class="def_gray"><a href="/pos_sales">POS</a></li>
+        <li class="li_select">
+          <select id="li_select">
+            <option value="1">兰芝</option>
+            <option selected="selected" value="2">梦妆</option>
+            <option value="3">雪花秀</option>
+          </select>
+        </li>
+    </ul><!--title ends-->
+    
+    <div class="user_nav_box">
+        <ul class="user_nav">
+            <li class="settings"><a href="/settings">系统设置</a></li>
+            <li><a href="#"><%= current_user.display_name %></a></li>
+            <li><a href="#"><%= Time.now.strftime("%Y-%m-%d") %></a></li>
+            <li><%= link_to "安全退出", destroy_user_session_path, :method =>  "delete" %></a></li>
+        </ul><!--user_nav ends-->
+    </div>
+    
+    <div class="clear"></div>
+    
+    <form id="search">
+        <div class="search_txt"><input type="text" id="search_txt" placeholder="搜索内容" /></div>
+        <input type="submit" value="" id="search_btn" />
+    </form>
+</div><!--top ends-->
+
+<div class="tab_nav">
+  <div class="tabs_links">
+       <ul id="navigation">
+           <li id="home" ><a href="/">欢迎您 <%= current_user.display_name %></a></li>
+           <li id="news"><a href="/news?section=news">新闻</a></li>
+           <li id="calendars"><a href="/calendars">产品及培训日历</a></li>
+           <li id="best_practices"><a href="/best_practices">Best practice</a></li>
+           <li id="live_stories"><a href="/live_stories">生活故事<!--<span>4</span>--></a></li>
+           <li id="sales"><a href="/sales">销售人员提案</a></li>
+           <li id="bas"><a href="/bas">BA课题</a></li>
+           <li id="sis"><a href="/sis">Trainer&amp;Coach活动计划</a></li>
+       </ul>
+    </div><!--tabs_links ends-->
+</div><!--tab_nav ends-->
+
+<script type="text/javascript">
+$(function(){
+  var liCon = "<%= controller_name %>";
+
+  $("#navigation").children().each(function(){
+    if(liCon == $(this).attr("id")){
+      $(this).addClass("active");
+    }
+  })
+})
+</script>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  desc: MyText
+  parent_id: 1
+  demo_id: 1
+  is_show: false
+  is_recommend: false
+
+two:
+  title: MyString
+  desc: MyText
+  parent_id: 1
+  demo_id: 1
+  is_show: false
+  is_recommend: false

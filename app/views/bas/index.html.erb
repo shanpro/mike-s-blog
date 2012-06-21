@@ -1,0 +1,51 @@
+<%= render partial: "shared/header" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>BA课题</h2>
+        <ul>
+          <li><a href="#">笔记本</a></li>
+          <li><a href="bp.html">BP事例</a></li>
+          <li><a href="#">自传SSEP的课题</a></li>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">编号</th>
+            <th width="10%">品牌</th>
+            <th width="10%">所属栏目</th>
+            <th width="30%">标题</th>
+            <th width="10%">阅览数/回复</th>
+            <th width="10%">发布时间</th>
+            <th width="10%">发布人</th>
+            <th class="border_rr" width="10%">操作</th>
+          </tr>
+
+          <%- (1..10).each do |index| %>
+          <tr>
+            <td><a href="ba_in.html"><%= index %></a></td>
+            <td><a href="ba_in.html">兰芝</a></td>
+            <td>BA</td>
+            <td><a href="ba_in.html">2012培训开始啦！！</a></td>
+            <td><%= link_to "15/2","/bas/1/comment" %></td>
+            <td>2012-04-25 16:00</td>
+            <td>Admin</td>
+            <td class="btn_operate"><!--<a href="#">编辑</a>--><a href="/bas/show1">查看</a></td>
+          </tr>
+          <%- end -%>
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->

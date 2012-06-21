@@ -1,0 +1,57 @@
+<%= render partial: "shared/posheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>销售留言板</h2>
+        <ul>
+          <li><a href="#">销售发展公告</a></li>
+          <li><a href="#">销售战略公告</a></li>
+          <li><a href="#">销售公告</a></li>
+          <li><a href="#">美容教育公告</a></li>
+          <li><a href="#">其他公告</a></li>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">公告编号</th>
+            <th width="40%">公告</th>
+            <th width="20%">阅览数/回复</th>
+            <th width="20%">发布时间</th>
+            <th class="border_rr" width="10%">操作</th>
+          </tr>
+
+          <%- (1..10).each do |index| -%>
+          <tr>
+            <td><a href="#"><%= index %></a></td>
+            <td><a href="#">2012培训开始啦！！</a></td>
+            <td><%= link_to "15/2","/pos_sales/1/comment" %></td>
+            <td>2012-04-25 16:00</td>
+            <td class="btn_operate"><a href="/pos_sales/new">编辑</a><a href="/pos_sales">查看</a></td>
+          </tr>
+          <%- end -%>
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->
+<%= render partial: "shared/poppos" %>
+<script type="text/javascript">
+$(function(){
+  var $mar_left = $('.popup_box').width();
+  var $mar_top = $('.popup_box').outerHeight();
+  popup();
+  //alert($mar_top)
+  $('.popup_box').css({'margin-left':-$mar_left/2 + 'px','margin-top':-$mar_top/2 + 'px'});
+})
+</script>

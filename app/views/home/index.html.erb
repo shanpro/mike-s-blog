@@ -1,0 +1,107 @@
+<%= render partial: "shared/header" %>
+
+<div class="main">
+    <div class="content">
+        <div class="tab_content" id="welcome">
+            <div class="user_area">
+                <div class="user_info group">
+                    <img class="user_img" src="<%= asset_path "user_img.jpg" %>" alt="" />
+                    <h4><%= current_user.display_name %></h4>
+                    <p>角色：<%= current_user.role %></p>
+                    <P>品牌：<%= current_user.brand %></P>
+                </div>
+                <div class="user_info">
+                    <h4>与我有关</h4>
+                    <p>相关：20</p>
+                    <P>发表：15</P>
+                </div>
+                <div class="user_info noborder">
+                    <h4>待我处理</h4>
+                    <p>回复：2</p>
+                </div>
+                <div class="clear"></div>
+            </div><!--user_area ends-->
+
+            <div class="con_show">
+                <div class="group">
+                    <div class="con">
+                        <h2>名誉殿堂</h2>
+                        <img class="con_img" src="<%= asset_path "hall_img.jpg" %>" alt="" />
+                        <div class="article">
+                            <h3>恭喜爱茉莉集团获得化妆品最佳产品奖</h3>
+                            <p>平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例台优秀案例台优秀案例台优秀案例台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例台优秀案例台优秀案例台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太</p>
+
+                            <a class="btn_more" href="#">more</a>
+                        </div>
+                    </div><!--con tab ends-->
+
+                    <div class="con nomargin_r">
+                        <h2>优秀事例</h2>
+                        <img class="con_img" src="<%= asset_path "bp_img.jpg" %>" alt="" />
+                        <div class="article">
+                            <h3>特别表扬上海太平洋柜台的BA们</h3>
+                            <p>平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例台优秀案例台优秀案例台优秀案例台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平太</p>
+
+                            <a class="btn_more" href="#">more</a>
+                        </div>                    
+                    </div><!--con tab ends-->
+                </div>
+
+                <div class="group">    
+                    <div class="con_bp">
+                        <h2><a class="btn_more" href="#">更多</a>热点BP</h2>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th width="15%">编号</th>
+                                <th width="20%">所属栏目</th>
+                                <th width="30%">标题</th>
+                                <th width="15%">阅览数</th>
+                                <th width="20%">操作</th>
+                            </tr>
+
+                            <%- (1..4).each do |index| -%>
+                            <tr>
+                                <td><%= index %></td>
+                                <td>生活故事</td>
+                                <td>很高兴加入爱茉莉大家庭</td>
+                                <td>15</td>
+                                <td class="btn_operate"><!-- <a href="#">编辑</a> --><a href="#">查看</a></td>
+                            </tr>
+                            <%- end -%>
+
+                        </table>
+
+                    </div><!--con tab ends-->
+
+                    <div class="con_bp nomargin_r">
+                        <h2><a class="btn_more" href="#">更多</a>推荐BP</h2>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th width="15%">编号</th>
+                                <th width="20%">所属栏目</th>
+                                <th width="30%">标题</th>
+                                <th width="15%">阅览数</th>
+                                <th width="20%">操作</th>
+                            </tr>
+
+                            <%- (1..4).each do |index| -%>
+                            <tr>
+                                <td><%= index %></td>
+                                <td>生活故事</td>
+                                <td>很高兴加入爱茉莉大家庭</td>
+                                <td>15</td>
+                                <td class="btn_operate"><!-- <a href="#">编辑</a> --><a href="#">查看</a></td>
+                            </tr>
+                            <%- end -%>
+
+                        </table>
+
+                    </div><!--con tab ends-->
+                </div>
+
+            </div>
+        </div><!--welcome tab ends-->
+
+    </div>
+    <div class="clear"></div>
+</div><!--main ends-->

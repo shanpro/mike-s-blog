@@ -1,0 +1,62 @@
+<%= render partial: "shared/settingheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content" id="welcome">
+      <div class="con_show">
+        <div class="group">    
+          <div class="con_bp">
+            <h2><a class="btn_more" href="#">更多</a>用户</h2>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th width="15%">编号</th>
+                <th width="20%">用户名</th>
+                <th width="30%">品牌</th>
+                <th width="15%">状态</th>
+                <th width="20%">角色</th>
+              </tr>
+
+              <%- (1..4).each do |index| -%>
+              <tr>
+                <td><%= index %></td>
+                <td>admin</td>
+                <td>梦妆</td>
+                <td>有效</td>
+                <td>管理员</td>
+              </tr>
+              <%- end -%>
+
+            </table>
+
+          </div><!--con tab ends-->
+
+          <div class="con_bp nomargin_r">
+            <h2><a class="btn_more" href="#">更多</a>版块</h2>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th width="15%">编号</th>
+                <th width="35%">名称</th>
+                <th width="30%">父级版块</th>
+                <th width="20%">状态</th>
+              </tr>
+
+              <%- (1..4).each do |index| -%>
+              <tr>
+                <td><%= index %></td>
+                <td>新闻</td>
+                <td>无</td>
+                <td>可见</td>
+              </tr>
+              <%- end -%>
+
+            </table>
+
+          </div><!--con tab ends-->
+        </div>
+
+      </div>
+    </div><!--welcome tab ends-->
+
+  </div>
+  <div class="clear"></div>
+</div><!--main ends-->

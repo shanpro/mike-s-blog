@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+  assign_group: 1
+  brand_id: 1
+  is_honour: false
+  is_good: false
+  status: 1
+  section_id: 1
+  view_count: 1
+  assign_brand: 1
+
+two:
+  title: MyString
+  content: MyText
+  assign_group: 1
+  brand_id: 1
+  is_honour: false
+  is_good: false
+  status: 1
+  section_id: 1
+  view_count: 1
+  assign_brand: 1
