@@ -1,5 +1,7 @@
 Ssep::Application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    get "users/update_brand", :to => "users#update_brand"
+  end
   # devise_scope :user do
   #   get "login", :to => "devise/sessions#new"
   #   get "register", :to => "devise/registrations#new"

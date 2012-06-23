@@ -5,9 +5,9 @@
         <li class="def_gray"><a href="/pos_sales">POS</a></li>
         <li class="li_select">
           <select id="li_select">
-            <option value="1">兰芝</option>
-            <option selected="selected" value="2">梦妆</option>
-            <option value="3">雪花秀</option>
+            <option value="1" <%= "selected='selected'" if current_user.brand_id.to_i == 1 %>>兰芝</option>
+            <option value="2" <%= "selected='selected'" if current_user.brand_id.to_i == 2 %>>梦妆</option>
+            <option value="3" <%= "selected='selected'" if current_user.brand_id.to_i == 3 %>>雪花秀</option>
           </select>
         </li>
     </ul><!--title ends-->
