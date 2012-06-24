@@ -10,8 +10,9 @@ class AnnouncementsController < ApplicationController
   def create
     case params["oper"]
     when "cancel"
-      redirect_to :action => "index" and return
+      redirect_to :action => "index"
     when "snap"
+      params["announcement"]["an_type"] = 0
       @an = Announcement.create(params["announcement"])
       redirect_to :action => "show", :id => @an
     else
@@ -25,8 +26,14 @@ class AnnouncementsController < ApplicationController
   end
 
   def update
-    if params["oper"] == "cancel"
-      redirect_to :action => "index" and return
+    case params["oper"]
+    when "cancel"
+      redirect_to :action => "index"
+    when "snap"
+      @an = Announcement.find(params[:id])
+      params["announcement"]["an_type"] = 0
+      @an.update_attributes(params[:announcement])
+      redirect_to :action => "show", :id => @an
     else
       @an = Announcement.find(params[:id])
       @an.update_attributes(params[:announcement])
