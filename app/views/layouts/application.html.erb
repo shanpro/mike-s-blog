@@ -16,64 +16,6 @@
 <body id="skin<%= cookies["brand"] || current_user.brand_id %>">
 
 <%= yield %>
-<div id="wBox_overlay" class="wBox_hide wBox_overlayBG" style="opacity: 0.5;display: none;"></div>
-<div id="wBox" style="left: 350px; top: 55px; display: none; ">
-  <div class="wBox_popup">
-    <table>
-      <tbody>
-        <tr>
-          <td class="wBox_tl"></td>
-          <td class="wBox_b"></td>
-          <td class="wBox_tr"></td>
-        </tr>
-        <tr>
-          <td class="wBox_b">
-            <div style="width:10px;">&nbsp;</div>
-          </td><td>
-            <div class="wBox_body">
-              <table class="wBox_title">
-                <tbody>
-                  <tr>
-                    <td class="wBox_dragTitle" style="cursor: move; ">
-                      <div class="wBox_itemTitle">系统公告</div>
-                    </td>
-                    <td width="20px" title="关闭">
-                      <div class="wBox_close"></div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="wBox_content" id="wBoxContent">
-                <div class="announcement_all">
-                  <div class="announcement_title">
-                    紧急公告！！！！！
-                  </div>
-                  <div class="announcement_content">
-                    这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
-                  </div>
-                  <div class="announcement_right_down">
-				            <p>发布人：Admin</p>
-                    <p>发布时间：<%= Time.now.to_s(:db) %></p>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-			          
-              </div>
-            </div>
-          </td>
-          <td class="wBox_b">
-            <div style="width:10px;">&nbsp;</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="wBox_bl"></td>
-          <td class="wBox_b"></td>
-          <td class="wBox_br">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<%= render "shared/wbox" if current_user.no_last_an? %>
 </body>
 </html>

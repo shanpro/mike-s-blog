@@ -49,6 +49,16 @@ class User < ActiveRecord::Base
     User::BRAND[brand_id]
   end
 
+  def no_last_an?
+    an = Announcement.where("id > #{self.an_id.to_i} and an_type=1").order("id asc").limit(1).first
+    if an
+      update_attribute :an_id, an.id
+      true
+    else
+      false
+    end
+  end
+
   def area
     Area.find(area_id).name 
   end
