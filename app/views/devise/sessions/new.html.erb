@@ -1,0 +1,23 @@
+<style type="text/css">
+	.login{
+		margin:0 auto;
+		text-align: center;
+	}
+</style>
+<div class="login">
+	<h2>登录</h2>
+
+	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<div class="inputs">
+		<%= f.input :email, :required => false, :autofocus => true %>
+		<%= f.input :password, :required => false %>
+		<%#= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+	</div>
+
+	<div class="actions">
+		<%= f.button :submit, "Sign in" %>
+	</div>
+	<% end %>
+
+	<%= render "links" %>	
+</div>

@@ -11,9 +11,6 @@ class News < ActiveRecord::Base
 
 	paginates_per 10
 
-	# validates_attachment :img, :presence => true,
-  # :content_type => { :content_type => "image/jpg" },
-  # :size => { :in => 0..10.kilobytes }
   has_attached_file :img,
   	# :whiny_thumbnails => true,
   	:styles => {:normal => "96x87#"},
@@ -29,7 +26,7 @@ class News < ActiveRecord::Base
   	:path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:id.:extension"
 
 
-	scope :all_datas, lambda{ |section| where(section_name: "news")}
+	scope :all_datas, where(section_name: "news", status: 1)
 	scope :brand_news, lambda{ |brand| where(section_name: "news", brand_id: brand)}
 
 	def brand

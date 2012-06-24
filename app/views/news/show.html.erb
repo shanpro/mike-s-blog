@@ -16,16 +16,15 @@
           <p class="inner_article"><%= @news.content %></p>
           <p>
             <a href="<%= @news.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @news.img.url(:normal) %></a>
-            <!-- <img src="<%#= asset_path "hall_img.jpg" %>" alt="" /> -->
           </p>
           <div class="btn_review">
-            <span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %><!-- <a class="clik_review" href="#">回复</a> --></span>
+            <span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
             <div class="clear"></div>
           </div>
         </div>
 
         <div class="review_area">
-          <%= render partial: "shared/review", :collection => @news %>
+          <%= render partial: "shared/review", locals: {resource: @news} %>
         </div><!--review_area ends-->
 
       </div><!--right_main ends-->
@@ -34,4 +33,4 @@
   </div>
 </div><!--main ends-->
 
-<%= render partial: "shared/popreview" %>
+<%= render partial: "shared/popreview", locals: {resource: @news} %>

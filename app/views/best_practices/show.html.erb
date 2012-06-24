@@ -3,43 +3,34 @@
 <div class="main">
 	<div class="content">
 		<div class="tab_content news group">
-			<div class="left_menu">
-				<h2>Best practice</h2>
-				<ul>
-					<li><a href="#">优秀BP</a></li>
-					<li><a href="#">SSEP名次及结果</a></li>
-					<li><a href="#">Best of Best</a></li>
-					<li><a href="#">Star BA</a></li>
-					<li><a href="#">Star BAS</a></li>
-				</ul>
-			</div><!--left_menu ends-->
-
+			<%= render partial: "shared/left_nav" %>
 			<div class="right_main">
 				<div class="wizard">
-					<span class="btn_operate"><a href="/best_practices/new">发表文章</a><a href="/best_practices">返回上级</a></span><a href="#">Best practice</a>&nbsp;&gt;&nbsp;<a href="#">兰芝</a>&nbsp;&gt;&nbsp;2012培训开始啦！！
+					<span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/best_practices?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>&nbsp;&gt;&nbsp;<%= @best_practice.title %>
 				</div>
 
-				<h3 class="inner_tit"><span>发表人:Admin</span>2012 培训季开始啦 ！！！</h3>
+				<h3 class="inner_tit"><span>发表人:<%= @best_practice.user.display_name %></span><%= @best_practice.title %></h3>
 
 				<div class="inner_main">
-					<div class="intr"><span>发布时间：2012-04-01 16:00</span>品牌：兰芝</div>
-					<p class="inner_article">2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！</p>
-					<p><img src="<%= asset_path "hall_img.jpg" %>" alt="" /><img src="<%= asset_path "hall_img.jpg" %>" alt="" /></p>
+					<div class="intr"><span>发布时间：<%= format_topic_time(@best_practice.created_at) %></span>品牌：<%= @best_practice.brand %></div>
+					<p class="inner_article"><%= @best_practice.content %></p>
+					<p>
+            <a href="<%= @best_practice.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @best_practice.img.url(:normal) %></a>
+          </p>
 					<div class="btn_review">
-						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %><!-- <a class="clik_review" href="#">回复</a> --></span>
+						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
 						<div class="clear"></div>
 					</div>
 				</div>
 
 				<div class="review_area">
-					<%= render partial: "shared/review" %>
+          <%= render partial: "shared/review", locals: {resource: @best_practice} %>
 				</div><!--review_area ends-->
 
-				<div class="page_bar btn_operate"><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></div>
 			</div><!--right_main ends-->
 			<div class="clear"></div>
 		</div><!--news tab ends-->
 	</div>
 </div><!--main ends-->
 
-<%= render partial: "shared/popreview" %>
+<%= render partial: "shared/popreview", locals: {resource: @best_practice} %>

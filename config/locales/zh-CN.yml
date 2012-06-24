@@ -301,3 +301,10 @@ zh-CN:
         subject: '重置密码信息'
       unlock_instructions:
         subject: '解锁信息'
+  views:
+    pagination:
+      first: "首页"
+      last: "末页"
+      previous: "上一页"
+      next: "下一页"
+      truncate: "..."

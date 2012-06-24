@@ -1,8 +1,9 @@
 // JavaScript Document
 $(function(){
-
+	
 /**********CALENDAR*********/  
 /**********CALENDAR*********/	
+	
 	
 var date = new Date();
 		var d = date.getDate();
@@ -94,15 +95,11 @@ var date = new Date();
 //skin change================================
 
  $(function option_change(){
- 	//var $num = $("#li_select option").index("#li_select option:selected");
  	var $num = $("select#li_select option:selected").val();
- 	//alert($num);
   $("body").attr("id","skin" + $num);
  	$("#li_select option").removeAttr("selected");
  	$("#li_select option").eq($num - 1).attr("selected","selected");
-  document.cookie = "brand="+$num
-  //$.get("/users/update_brand?brand_id="+$num)
- 	//alert($("#li_select option").eq($num - 1).attr());
+ 	document.cookie = "brand="+$num;
  	$("#li_select").change(option_change);
  })
 
@@ -110,7 +107,6 @@ var date = new Date();
 popup=function(){
 	var $mar_left = $('.popup_box').outerWidth();
 	var $mar_top = $('.popup_box').outerHeight();
-	//alert($mar_left/2)
 	$('.popup_box').css({'margin-left':-$mar_left/2 + 'px','margin-top':-$mar_top/2 + 'px'});
 
 	$('.popup_box,.overlay').show();

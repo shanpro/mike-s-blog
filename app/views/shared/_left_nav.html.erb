@@ -1,0 +1,8 @@
+<div class="left_menu">
+  <h2><%= @section.title %></h2>
+  <ul>
+    <% @section.children.each do |child| %>
+    <li><a href="/<%= @section.eng_name %>?section=<%= child.id %>"><%= child.title %></a></li>
+    <%- end -%>
+  </ul>
+</div><!--left_menu ends-->
