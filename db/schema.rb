@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621054821) do
+ActiveRecord::Schema.define(:version => 20120623150324) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(:version => 20120621054821) do
   create_table "admins_groups", :force => true do |t|
     t.integer  "admin_id"
     t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "announcements", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "is_urgent"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

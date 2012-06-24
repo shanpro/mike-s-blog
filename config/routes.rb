@@ -1,4 +1,6 @@
 Ssep::Application.routes.draw do
+  resources :announcements
+
   devise_for :users do
     get "users/update_brand", :to => "users#update_brand"
   end

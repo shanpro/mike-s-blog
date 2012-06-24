@@ -1,0 +1,160 @@
+#wBox .wBox_b {
+  /*filter:alpha(opacity=80);*/
+  /*-moz-opacity:0.8;*/
+  /*opacity: 0.8;*/
+  background-image:url(<%= asset_path "wbox.png"%>);
+  width:10px;
+}
+
+#wBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  text-align: left;
+  display:none;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  width: 660px;
+}
+
+#wBox .wBox_popup {
+  position: relative;
+}
+
+#wBox table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#wBox td {
+  border-bottom: 0;
+  padding: 0;
+}
+/*
+#wBox .wBox_body {
+  background-color:#ffffff;
+  border:1px solid #4D7BE0;
+}
+*/
+#wBox img {
+  border: 0;
+  margin: 0;
+}
+/*#wBox div.input {
+  margin: 10px 0;
+}*/
+#wBox form.simple_form .input.string input, #wBox form.simple_form textarea {
+  width: 398px;
+}
+#wBox #new_private_message textarea {
+  width: 95%;
+  margin: 5px auto;
+}
+#wBox .message textarea#message_content {
+  width: 655px;
+  margin: 5px auto;
+}
+#wBox #micropost .message input[type=submit] {
+  float: right;
+}
+#wBox #micropost .message .post_to_weibo {
+  float: right;
+  margin: 5px;
+  float: right;
+}
+#wBox #new_private_message input[type=submit] {
+  //float: right;
+}
+#wBox .wait_icon {
+  display: none;
+}
+/*#wBox .wBox_title {
+  height:32px;
+  line-height:32px;
+  background:url(/images/system_default/form_header.jpg) repeat-x;
+
+}*/
+#wBox .wBox_title .wBox_itemTitle{
+  padding-left:20px;
+  overflow:hidden;
+  font-size:14px;
+  font-weight:bold;
+}
+#wBox .wBox_title .wBox_close{
+  background:url(<%= asset_path "close.png"%>) no-repeat 0 0;
+  height:14px;
+  width:14px;
+  overflow:hidden;
+  cursor:pointer;
+  margin-top: 5px;
+}
+#wBox .wBox_title .on{
+  background-position:0 -14px;
+}
+#wBox .wBox_tl, #wBox .wBox_tr, #wBox .wBox_bl, #wBox .wBox_br {
+  height: 10px;
+  width: 10px;
+  overflow: hidden;
+  background-image:url(<%= asset_path "wbox.png"%>);
+  padding: 0;
+  /*filter:alpha(opacity=80);*/
+  /*-moz-opacity:0.8;*/
+  /*opacity: 0.8;*/
+}
+
+#wBox #wBoxContent{
+  font-size :14px;
+  width     : auto;
+  min-width : 580px;
+  /*padding: 15px;*/
+}
+#wBox_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  /*background: #000;*/
+}
+#wBox .wBox_load{
+  width:270px;
+}
+.wBox_hide {
+  z-index:-100;
+}
+
+.wBox_overlayBG {
+  background-color: black;
+  z-index: 99;
+}
+#wBox #wBox_loading{
+  width:32px;height:32px;margin:0 auto;
+}
+#wBox .wBox_title tr {
+  height: 32px;
+  line-height: 32px;
+  background: url(<%= asset_path "form_header.jpg"%>) repeat-x;
+}
+table.wBox_title{
+  width:100%;
+}
+.announcement_all{
+  padding:20px;
+  background: white;
+}
+.announcement_title{
+
+}
+.announcement_content{
+  padding-top: 20px;
+}
+.announcement_right_down{
+  padding-top: 40px;
+  float: right;
+}
+.announcement_right_down p{
+  width: 210px;
+  padding-top:10px;
+}
