@@ -1,9 +1,6 @@
 Ssep::Application.routes.draw do
-  resources :announcements
 
-  devise_for :users do
-    get "users/update_brand", :to => "users#update_brand"
-  end
+  devise_for :users
   # devise_scope :user do
   #   get "login", :to => "devise/sessions#new"
   #   get "register", :to => "devise/registrations#new"
@@ -13,7 +10,7 @@ Ssep::Application.routes.draw do
 
   root :to => "home#index"
 
-  
+  resources :announcements
   resources "news"
   resources "bas"
   resources "live_stories"

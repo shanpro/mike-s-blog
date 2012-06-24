@@ -13,7 +13,7 @@
 		</script>
   <![endif]-->
 </head>
-<body id="skin<%= current_user.brand_id %>">
+<body id="skin<%= cookies["brand"] || current_user.brand_id %>">
 
 <%= yield %>
 <div id="wBox_overlay" class="wBox_hide wBox_overlayBG" style="opacity: 0.5;display: none;"></div>

@@ -107,7 +107,8 @@ var date = new Date();
   $("body").attr("id","skin" + $num);
  	$("#li_select option").removeAttr("selected");
  	$("#li_select option").eq($num - 1).attr("selected","selected");
-  $.get("/users/update_brand?brand_id="+$num)
+  document.cookie = "brand="+$num
+  //$.get("/users/update_brand?brand_id="+$num)
  	//alert($("#li_select option").eq($num - 1).attr());
  	$("#li_select").change(option_change);
  })
