@@ -1,60 +1,14 @@
 <%- an = Announcement.find(current_user.an_id)  %>
-<div id="wBox_overlay" class="wBox_hide wBox_overlayBG" style="opacity: 0.5;"></div>
-<div id="wBox" style="left: 350px; top: 55px; display: block; ">
-  <div class="wBox_popup">
-    <table>
-      <tbody>
-        <tr>
-          <td class="wBox_tl"></td>
-          <td class="wBox_b"></td>
-          <td class="wBox_tr"></td>
-        </tr>
-        <tr>
-          <td class="wBox_b">
-            <div style="width:10px;">&nbsp;</div>
-          </td><td>
-            <div class="wBox_body">
-              <table class="wBox_title">
-                <tbody>
-                  <tr>
-                    <td class="wBox_dragTitle" style="cursor: move; ">
-                      <div class="wBox_itemTitle">系统公告</div>
-                    </td>
-                    <td width="20px" title="关闭">
-                      <div class="wBox_close" onclick="$('#wBox, #wBox_overlay').remove()"></div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="wBox_content" id="wBoxContent">
-                <div class="announcement_all">
-                  <div class="announcement_title">
-                    <%= an.title %>
-                  </div>
-                  <div class="announcement_content">
-                    <%= an.content %>
-                  </div>
-                  <div class="announcement_right_down">
-                    <p>发布人：<%= an.user.try(:name) || "Admin" %></p>
-                    <p>发布时间：<%= an.created_at.to_s(:db) %></p>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-
-              </div>
-            </div>
-          </td>
-          <td class="wBox_b">
-            <div style="width:10px;">&nbsp;</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="wBox_bl"></td>
-          <td class="wBox_b"></td>
-          <td class="wBox_br">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="announcement_all">
+  <div class="announcement_title">
+    <%= an.title %>
   </div>
+  <div class="announcement_content">
+    <%= an.content %>
+  </div>
+  <div class="announcement_right_down">
+    <p>发布人：<%= an.user.try(:name) || "Admin" %></p>
+    <p>发布时间：<%= an.created_at.to_s(:db) %></p>
+  </div>
+  <div class="clear"></div>
 </div>

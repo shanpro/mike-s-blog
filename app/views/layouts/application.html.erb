@@ -15,7 +15,15 @@
 </head>
 <body id="skin<%= cookies["brand"] || current_user.brand_id %>">
 
-<%= yield %>
-<%= render partial: "shared/wbox" if current_user.no_last_an? %>
+  <%= yield %>
+  <%- if current_user.no_last_an? %>
+    <script type="text/javascript">
+      $(function(){
+        wbox = $('<div id="ok"><%= j render "shared/wbox" %></div>').wBox({darget:false, title:"系统公告"})
+        wbox.unbind()
+        wbox.showBox()
+      });
+    </script>
+  <% end %>
 </body>
 </html>
