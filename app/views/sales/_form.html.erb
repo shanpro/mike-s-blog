@@ -1,0 +1,33 @@
+<h3 class="inner_tit"><span>用户：<%= current_user.display_name %></span><span>柜台：<%= current_user.counter %></span><span>BA：<%= current_user.user_ba %></span><span>地区：<%= current_user.area %></span></h3>
+
+<div class="inner_form">
+  <%= f.hidden_field :status, value: 1 %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="review_txt"><label>标题：</label><%= f.text_field :title %></div>
+  <div class="review_txt"><label>内容：</label><%= f.text_area :content, :size => "10x10" %></div>
+  <div class="review_txt"><label>上传图片：</label><%= f.file_field :img, :class => "form_file" %></div>
+  <div class="review_txt"><label>上传视频：</label><%= f.file_field :video, :class => "form_file" %></div>
+  <div class="review_txt"><label>上传附件：</label><%= f.file_field :file, :class => "form_file" %></div>
+  <div class="review_txt">
+    <label>品牌：</label>
+    <%= f.select :brand_id, options_for_select(User::BRAND.invert, @sales.brand_id) %>
+  </div>
+  <div class="review_txt">
+    <label>板块：</label>
+    <%= f.select :section_id, options_for_select(@section.children.map{|s| [s.title, s.id]}, @sales.section_id) %>
+  </div>
+</div>
+<div class="page_bar">
+  <%= f.submit "发布", class: "1"%>
+  <%= f.submit "临时保存", class: "0"%>
+  <input type="button" value="取消" />
+  <!-- <input type="button" value="推荐" /> -->
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $(".page_bar input[type=submit]").click(function(){
+      $("input#sale_status").val($(this).attr("class"))
+    })
+  });
+</script>

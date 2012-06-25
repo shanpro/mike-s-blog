@@ -16,6 +16,6 @@
 <body id="skin<%= cookies["brand"] || current_user.brand_id %>">
 
 <%= yield %>
-<%= render "shared/wbox" if current_user.no_last_an? %>
+<%= render partial: "shared/wbox" if current_user.no_last_an? %>
 </body>
 </html>

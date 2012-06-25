@@ -1,6 +1,9 @@
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
   has_many :news
+  has_many :comments
+  has_many :replies
+
   ROLES = {
     "admin"  => "管理员",
     "ba"     => "BA",
@@ -25,17 +28,17 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable 
+  :recoverable, :rememberable, :trackable, :validatable 
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :login
   attr_accessor :login
   
   has_attached_file :avatar,
-    :styles => {:upload => "80x72#"},
-    :whiny_thumbnails => true,
-    :url => "/system/:class/:attachment/:id_partition/:style/:id.:extension",
-    :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:id.:extension"
+  :styles => {:upload => "80x72#"},
+  :whiny_thumbnails => true,
+  :url => "/system/:class/:attachment/:id_partition/:style/:id.:extension",
+  :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:id.:extension"
 
   def display_name
     email || login
@@ -49,17 +52,18 @@ class User < ActiveRecord::Base
     User::BRAND[brand_id]
   end
 
-  def no_last_an?
-    an = Announcement.where("id > #{self.an_id.to_i} and an_type=1").order("id asc").limit(1).first
-    if an
-      update_attribute :an_id, an.id
-      true
-    else
-      false
-    end
-  end
-
   def area
     Area.find(area_id).name 
   end
+
+  def no_last_an?
+   an = Announcement.where("id > #{self.an_id.to_i} and an_type=1").order("id asc").limit(1).first
+   if an
+     update_attribute :an_id, an.id
+     true
+   else
+     false
+   end
+ end
+
 end

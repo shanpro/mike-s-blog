@@ -7,3 +7,7 @@
 7. rails s
 
 ENJOY :)
+
+
+##FIX
+如果分页样式不太好，可修改app/views/kaminari下文件！

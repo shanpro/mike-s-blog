@@ -29,13 +29,18 @@
             <td><%= link_to "#{one_news.view_count}/#{one_news.comments.count}", "/news/1/comment" %></td>
             <td><%= format_topic_time one_news.updated_at %></td>
             <td><%= one_news.user.try(:display_name) %></td>
-            <td class="btn_operate"><!--<a href="#">编辑</a>--><%= link_to "查看", news_path(one_news, :brand => one_news.brand_id) %></td>
+            <td class="btn_operate">
+              <%= link_to_if(current_user.news, "编辑", edit_news_path(one_news)) %>
+              <%= link_to "查看", news_path(one_news, :brand => one_news.brand_id, :viewed => true) %>
+            </td>
           </tr>
           <%- end -%>
-
-
           <tr>
-            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @news %>
+            </td>
           </tr>
         </table>
 
@@ -45,3 +50,12 @@
 
   </div>
 </div><!--main ends-->
+
+<script type="text/javascript">
+  $(function(){
+    $("#will_paginate").change(function(){
+      per_page = this.value;
+      window.location.href="/news?seciton=news&per_page="+per_page;
+    });
+  });
+</script>

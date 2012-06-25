@@ -5,42 +5,14 @@
       <%= render partial: "left_nav" %>
       <div class="right_main">
         <div class="wizard">
-          <span class="btn_operate"><a href="/news/new">发表文章</a><a href="/news/show1">返回上级</a></span><a href="/news">新闻</a><%= raw news_nav(params[:brand].blank? ? current_user.brand_id : params[:brand]) %>&nbsp;&gt;&nbsp;发表文章
+          <span class="btn_operate"><a href="/news/new">发表文章</a><a href="/news">返回上级</a></span><a href="/news">新闻</a><%= raw news_nav(params[:brand].blank? ? current_user.brand_id : params[:brand]) %>&nbsp;&gt;&nbsp;发表文章
         </div>
         <%= flash[:error] %>
         <%= form_for(@news, html: {id: "form_main"}, brand: params[:brand]) do |f| %>
-          <h3 class="inner_tit"><span>用户：<%= current_user.display_name %></span><span>柜台：<%= current_user.counter %></span><span>BA：<%= current_user.user_ba %></span><span>地区：<%= current_user.area %></span></h3>
-
-          <div class="inner_form">
-            <%= f.hidden_field :brand_id, value: (params[:brand].blank? ? current_user.brand_id : params[:brand]) %>
-            <%= f.hidden_field :section_name, value: controller_name %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <div class="review_txt"><label>标题：</label><%= f.text_field :title %></div>
-            <div class="review_txt"><label>内容：</label><%= f.text_area :content, :size => "10x10" %></div>
-            <div class="review_txt"><label>上传图片：</label><%= f.file_field :img, :class => "form_file" %></div>
-            <div class="review_txt"><label>上传视频：</label><%= f.file_field :video, :class => "form_file" %></div>
-            <div class="review_txt"><label>上传附件：</label><%= f.file_field :file, :class => "form_file" %></div>
-<!--             <div class="review_txt">
-              <label>谁能看见：</label>
-              <%#= f.select :assign_brand, options_for_select(User::BRAND.invert) %>
-              <%#= f.select :assign_group, options_for_select(User::GROUP.invert) %>
-            </div> -->
-          </div>
-          <div class="page_bar">
-            <!-- <input type="submit" value="发布" /> -->
-            <%= f.submit "发布",  name: "1"%>
-            <input type="button" value="临时保存" />
-            <input type="button" value="取消" />
-            <!-- <input type="button" value="推荐" /> -->
-          </div>
-          <%- end -%>
+          <%= render partial: "form", locals: {f: f} %>
+        <%- end -%>
         </div><!--right_main ends-->
         <div class="clear"></div>
       </div><!--news tab ends-->
     </div>
 </div><!--main ends-->
-<script type="text/javascript">
-  $(function(){
-
-  });
-</script>
