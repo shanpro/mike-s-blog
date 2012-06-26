@@ -1,0 +1,26 @@
+<div id="lay_form">
+  <%= form_for(Calendar.new, html: {id: "form_main", enctype: "multipart/form-data"}) do |f| %>
+    <h3 class="inner_tit">
+      <span style="padding-left: 20px;padding-right: 20px;">用户：<%= current_user.display_name %></span>
+      <span style="padding-left: 20px;padding-right: 20px;" class="calendar_time"></span>
+    </h3>
+        
+    <div class="inner_form">
+      <%= f.hidden_field :start %>
+      <%= f.hidden_field :end %>
+      <%= f.hidden_field :allday %>
+      <%#= f.fields_for :topic do |f| %>
+        <%#= f.file_field :img %>
+      <%# end %>
+      <div class="review_txt"><label style="width: 16%;">标题：</label><input id="topic_title" name="topic[title]" size="30" style="width: 80%;" type="text"></div>
+      <div class="review_txt"><label style="width: 16%;">内容：</label><textarea cols="10" id="topic_content" name="topic[content]" rows="10" style="width: 80%;"></textarea></div>
+      <div class="review_txt"><label style="width: 16%;">上传图片：</label><input class="form_file" id="topic_img" name="topic[img]" style="width: 80%;" type="file"></div>
+      <div class="review_txt"><label style="width: 16%;">上传视频：</label><input class="form_file" id="topic_video" name="topic[video]" style="width: 80%;" type="file"></div>
+      <div class="review_txt"><label style="width: 16%;">上传附件：</label><input class="form_file" id="topic_file" name="topic[file]" style="width: 80%;" type="file"></div>
+    </div>
+    <div class="page_bar">
+      <%= f.submit "发布", class: "submit"%>
+      <%= f.submit "取消", class: "cancel"%>
+    </div>
+  <%- end -%>
+</div>
