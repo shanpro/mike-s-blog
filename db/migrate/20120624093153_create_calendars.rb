@@ -4,6 +4,7 @@ class CreateCalendars < ActiveRecord::Migration
       #t.integer  :topic_id
       t.string   :title
       t.text     :content
+      t.string   :url
       t.boolean  :allday, :default => 0
       t.datetime :start
       t.datetime :end
