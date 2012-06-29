@@ -138,7 +138,7 @@
             p = d.height(),
             s = a("html").height();
             q = Math.max(q, p);
-            c.height(q).width(d.width())
+            c.height($(document).height()).width(d.width())
         }
         function k(p) {
             l = (d.width() - p) / 2;

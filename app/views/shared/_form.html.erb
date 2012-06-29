@@ -4,14 +4,10 @@
       <span style="padding-left: 20px;padding-right: 20px;">用户：<%= current_user.display_name %></span>
       <span style="padding-left: 20px;padding-right: 20px;" class="calendar_time"></span>
     </h3>
-        
     <div class="inner_form">
       <%= f.hidden_field :start %>
       <%= f.hidden_field :end %>
-      <%= f.hidden_field :allday %>
-      <%#= f.fields_for :topic do |f| %>
-        <%#= f.file_field :img %>
-      <%# end %>
+      <%= f.hidden_field :allday %>        
       <div class="review_txt"><label style="width: 16%;">标题：</label><input id="topic_title" name="topic[title]" size="30" style="width: 80%;" type="text"></div>
       <div class="review_txt"><label style="width: 16%;">内容：</label><textarea cols="10" id="topic_content" name="topic[content]" rows="10" style="width: 80%;"></textarea></div>
       <div class="review_txt"><label style="width: 16%;">上传图片：</label><input class="form_file" id="topic_img" name="topic[img]" style="width: 80%;" type="file"></div>
