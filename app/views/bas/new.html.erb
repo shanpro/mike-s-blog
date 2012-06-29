@@ -1,44 +1,18 @@
-<%= render partial: "shared/header" %>
-
-
+<%= render partial: "shared/header"%>
 <div class="main">
-    <div class="content">
-    	<div class="tab_content news group">
-        	<div class="left_menu">
-            	<h2>BA课题</h2>
-            	<ul>
-                	<li><a href="#">笔记本</a></li>
-                    <li><a href="bp.html">BP事例</a></li>
-                    <li><a href="#">自传SSEP的课题</a></li>
-                </ul>
-            </div><!--left_menu ends-->
-            
-            <div class="right_main">
-            	<div class="wizard">
-                	<span class="btn_operate"><a href="/bas/new">发表文章</a><a href="/bas/show1">返回上级</a></span><a href="#">BA课题</a>&nbsp;&gt;&nbsp;发表文章
-                </div>
-
-                <form id="form_main">
-                    <h3 class="inner_tit"><span>用户：admin</span><span>柜台：太平洋百货</span><span>BA：********</span><span>地区：上海</span></h3>
-                    
-                    <div class="inner_form">
-                        <div class="review_txt"><label>标题：</label><input type="text"></div>
-                        <div class="review_txt"><label>内容：</label><textarea rows="10" cols="30"></textarea></div>
-                        <div class="review_txt">
-                        	<div class="publish_ba"><label>上传图片：</label><input class="form_file" type="file"><br /><img src="<%= asset_path "hall_img.jpg" %>" /></div>
-                        	<div class="publish_ba"><label>上传视频：</label><input class="form_file" type="file"><br /><img src="<%= asset_path "hall_img.jpg" %>" /></div>
-                        </div>
-                        <div class="review_txt">
-                        	<div class="publish_ba"><label>态度结果：</label><input type="text" /></div>
-                        	<div class="publish_ba"><label>销售结果：</label><input type="text" /></div>
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="page_bar"><input type="button" value="发布" /><input type="button" value="临时保存" /><input type="button" value="取消" /><input type="button" value="推荐" /></div>
-                </form>
-            </div><!--right_main ends-->
-            <div class="clear"></div>
-        </div><!--news tab ends-->
+  <div class="content">
+    <div class="tab_content news group">
+      <%= render partial: "shared/left_nav" %>
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/bas/new">发表文章</a><a href="/news">返回上级</a></span><a href="/ba"><%= @section.title %></a>&nbsp;&gt;&nbsp;发表文章
+        </div>
+        <%= flash[:error] %>
+        <%= form_for(@ba, html: {id: "form_main"}) do |f| %>
+          <%= render partial: "form", locals: {f: f} %>
+        <%- end -%>
+        </div><!--right_main ends-->
+        <div class="clear"></div>
+      </div><!--news tab ends-->
     </div>
 </div><!--main ends-->

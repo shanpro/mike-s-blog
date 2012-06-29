@@ -55,7 +55,7 @@
   $(function(){
     $("#will_paginate").change(function(){
       per_page = this.value;
-      window.location.href="/news?seciton=news&per_page="+per_page;
+      window.location.href="/best_practices?seciton=<%= params[:section] %>&per_page="+per_page;
     });
   });
 </script>

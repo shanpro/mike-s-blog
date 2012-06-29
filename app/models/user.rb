@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :login
-  attr_accessor :login
   
   has_attached_file :avatar,
   :styles => {:upload => "80x72#"},
@@ -41,7 +40,7 @@ class User < ActiveRecord::Base
   :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:id.:extension"
 
   def display_name
-    email || login
+    name || login
   end
 
   def role
@@ -65,5 +64,16 @@ class User < ActiveRecord::Base
      false
    end
  end
+
+ class << self
+    def find_for_database_authentication(conditions)
+      user = find(:first, :conditions => conditions)
+      if user.nil?
+        find(:first, :conditions => {:login => conditions[:email]})
+      else
+        user
+      end
+    end
+  end
 
 end

@@ -16,7 +16,7 @@ class CalendarsController < ApplicationController
   def form_box
     render "shared/_form", :layout => false
   end
-
+  
   def current_events
     @cals = Calendar.where(["start >= ? and end <= ?", params[:start].to_time, params[:end].to_time]).select("id, title, start, end, url, allday as allDay")
     render :json => @cals.to_json

@@ -1,44 +1,36 @@
-<%= render partial: "shared/header" %>
+<%= render partial: "shared/header"%>
 
 <div class="main">
-    <div class="content">
-    	<div class="tab_content news group">
-        	<div class="left_menu">
-            	<h2>BA课题</h2>
-            	<ul>
-                	<li><a href="#">笔记本</a></li>
-                    <li><a href="bp.html">BP事例</a></li>
-                    <li><a href="#">自传SSEP的课题</a></li>
-                </ul>
-            </div><!--left_menu ends-->
-            
-            <div class="right_main">
-            	<div class="wizard">
-                	<span class="btn_operate"><a href="/bas/new">发表文章</a><a href="/bas">返回上级</a></span><a href="#">BA课题</a>&nbsp;&gt;&nbsp;BP XXX1事例 ！！
-                </div>
-                
-                <h3 class="inner_tit"><span>发表人:Admin</span>BP XXX1事例 ！！</h3>
-                
-                <div class="inner_main">
-                    <div class="intr"><span>发布时间：2012-04-01 16:00</span>品牌：兰芝</div>
-                    <p class="inner_article">2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！</p>
-                    <p><img src="<%= asset_path "hall_img.jpg" %>" alt="" /><img src="<%= asset_path "hall_img.jpg" %>" alt="" /></p>
-                    <p>态度结果：2012培训季开始啦 askkk ks90<br />销售结果：2012培训季开始啦 askkk ks90</p>
-                    <div class="btn_review">
-                        <span class="btn_operate"><a href="#">推荐</a><a class="clik_review" href="#">回复</a></span>
-                        <div class="clear"></div>
-                    </div>
-              </div>
+	<div class="content">
+		<div class="tab_content news group">
+			<%= render partial: "shared/left_nav" %>
+			<div class="right_main">
+				<div class="wizard">
+					<span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/bas?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>&nbsp;&gt;&nbsp;<%= @ba.title %>
+				</div>
 
-                <div class="review_area">
-                    <%= render partial: "shared/review" %>
-                </div><!--review_area ends-->
-                
-                <div class="page_bar btn_operate"><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></div>
-            </div><!--right_main ends-->
-            <div class="clear"></div>
-        </div><!--news tab ends-->
-    </div>
+				<h3 class="inner_tit"><span>发表人:<%= @ba.user.display_name %></span><%= @ba.title %></h3>
+
+				<div class="inner_main">
+					<div class="intr"><span>发布时间：<%= format_topic_time(@ba.created_at) %></span>品牌：<%= @ba.brand %></div>
+					<p class="inner_article"><%= @ba.content %></p>
+					<p>
+            <a href="<%= @ba.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @ba.img.url(:normal) %></a>
+          </p>
+					<div class="btn_review">
+						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div class="review_area">
+          <%= render partial: "shared/review", locals: {resource: @ba} %>
+				</div><!--review_area ends-->
+
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+		</div><!--news tab ends-->
+	</div>
 </div><!--main ends-->
 
-<%= render partial: "shared/popreview" %>
+<%= render partial: "shared/popreview", locals: {resource: @ba} %>

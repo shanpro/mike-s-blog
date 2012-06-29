@@ -1,12 +1,12 @@
 # -*- encoding : utf-8 -*-
 #$:.unshift(File.expand_path('./lib', ENV['rvm_path']||="~/.rvm")) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"                  # Load RVM's capistrano plugin.
-set :rvm_ruby_string, '1.9.2'        # Or whatever env you want it to run in.
+set :rvm_ruby_string, '1.9.3'        # Or whatever env you want it to run in.
 
 require 'bundler/capistrano'
 
- set :rvm_path, "/usr/local/rvm"
- set :rvm_bin_path, "/usr/local/rvm/bin"
+ set :rvm_path, "/home/XideSupport/.rvm"
+ set :rvm_bin_path, "/home/XideSupport/.rvm/bin"
 set :application, "ssep"
 
 set :rvm_trust_rvmrcs_flag, 1
@@ -24,26 +24,28 @@ set :keep_releases, 3
 set :git_shallow_clone, 1
 set :git_enable_submodules, 1
 
-role :web, "ssep.doorder.com" # Your HTTP server, Apache/etc
-role :app, "ssep.doorder.com" # This may be the same as your `Web` server
-role :db, "ssep.doorder.com", :primary => true # This is where Rails migrations will run
+role :web, "221.133.247.132" # Your HTTP server, Apache/etc
+role :app, "221.133.247.132" # This may be the same as your `Web` server
+role :db, "221.133.247.132", :primary => true # This is where Rails migrations will run
 
-set :user, "root"
+set :user, "XideSupport"
 set :repository, "git@github.com:nioteam/ssep.git"
 set :branch, "master"
-set :deploy_to, "/var/rails/ssep"
+set :deploy_to, "/home/XideSupport/www/ssep"
 
 # tasks
 namespace :deploy do
+  task :start, :roles => :app do
+    unicorn.start
+  end
 
-  [:start, :stop].each do |t|
-    desc "#{t} task is a no-op with mod_rails"
-    task t, :roles => :app do ; end
+  task :stop, :roles => :app do
+    unicorn.stop
   end
 
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "touch #{current_path}/tmp/restart.txt"
+    unicorn.reload
   end
 
   desc "Symlink shared resources on each release"
@@ -51,11 +53,14 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/system #{release_path}/public/system"
   end
-
+end
+namespace :db do
+  desc "migrate db"
+  task :migrate, :roles => :app do
+    run "cd #{deploy_to}/current && RAILS_ENV=production rake db:migrate"
+  end
 end
 
-#after 'deploy:update_code', 'deploy:symlink_shared'
 before 'bundle:install', 'deploy:symlink_shared'
-#after "deploy:finalize_code", "deploy:symlink_shared"
 
 require 'capistrano-unicorn'

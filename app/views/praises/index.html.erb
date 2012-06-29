@@ -1,0 +1,57 @@
+<%= render partial: "shared/header" %>
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <%= render partial: "shared/left_nav" %>
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/praises/new">发表文章</a></span><a href="/praises"><%= @section.title %></a>&nbsp;&gt;&nbsp;<a href="/praises">赞美格式</a>
+        </div>
+
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">编号</th>
+            <th width="10%">FROM</th>
+            <th width="25%">TO</th>
+            <th width="10%">发布时间</th>
+            <th width="10%">发布人</th>
+            <th class="border_rr" width="15%">操作</th>
+          </tr>
+
+          <%- @praises.each do |praise| %>
+          <tr>
+            <td><%= link_to praise.id, praises_path(praise) %></a></td>
+            <td><%= link_to praise.from, praises_path(praise) %></a></td>
+            <td><%= link_to praise.to, praise_path(praise) %></td>
+            <td><%= format_topic_time praise.updated_at %></td>
+            <td><%= praise.user.try(:display_name) %></td>
+            <td class="btn_operate">
+              <%#= link_to_if(current_user.news, "编辑", edit_praise_path(praise)) %>
+              <%= link_to "查看", praise_path(praise) %>
+            </td>
+          </tr>
+          <%- end -%>
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @praises %>
+            </td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->
+
+<script type="text/javascript">
+  $(function(){
+    $("#will_paginate").change(function(){
+      per_page = this.value;
+      window.location.href="/praises?seciton=<%= params[:section] %>&per_page="+per_page;
+    });
+  });
+</script>

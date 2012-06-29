@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ssep</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>Ssep</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 
-  <!--[if IE 6]>
-		<script src="/png.js"></script>
-		<script>
-			PNG.fix('img,div,a,ul,li,a,input,h2');
-		</script>
-  <![endif]-->
-</head>
-<body id="skin<%= cookies["brand"] || current_user.brand_id %>">
-
-  <%= yield %>
-  <%- if current_user.no_last_an? %>
-    <script type="text/javascript">
-      $(function(){
-        wbox = $('<div id="ok"><%= j render "shared/wbox" %></div>').wBox({darget:false, title:"系统公告"})
-        wbox.unbind()
-        wbox.showBox()
-      });
+    <!--[if IE 6]>
+    <script src="/png.js"></script>
+    <script>
+      PNG.fix('img,div,a,ul,li,a,input,h2');
     </script>
-  <% end %>
-</body>
+    <![endif]-->
+  </head>
+  <body id="skin<%= cookies["brand"] || current_user.brand_id %>">
+
+    <%= yield %>
+    <%- if current_user.no_last_an? %>
+      <script type="text/javascript">
+        $(function(){
+            wbox = $('<div id="ok"><%= j render "shared/wbox" %></div>').wBox({darget:false, title:"系统公告"})
+            wbox.unbind()
+            wbox.showBox()
+            });
+      </script>
+    <% end %>
+  </body>
 </html>

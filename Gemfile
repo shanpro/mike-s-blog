@@ -15,7 +15,7 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem "capistrano", "2.11.2"
+  gem "capistrano"
   gem 'debugger'
   gem 'quiet_assets'
   gem 'bond'
@@ -23,7 +23,11 @@ group :development do
   gem "awesome_print"
   gem "map_by_method"
   gem "hirb"
+  gem "rvm-capistrano"
+  gem "capistrano-unicorn"
 end
+
+gem 'unicorn'
 
 ##User register and login
 gem "devise"
@@ -36,8 +40,5 @@ gem "paperclip"
 
 gem "magic_admin", :git => "git@github.com:nioteam/magic_admin.git", :branch => "bootstrap"
 gem "magic_content", :git => "git@github.com:nioteam/magic_content.git"
-#gem "rvm-capistrano"
-#gem "capistrano-unicorn"
-
 
 gem "kaminari"

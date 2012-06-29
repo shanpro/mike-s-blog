@@ -9,14 +9,20 @@
             <option value="3" <%= "selected='selected'" if cookies["brand"].to_i == 3 %>>雪花秀</option>
           </select>
         </li>
-    </ul><!--title ends-->
+<!--         <li class="li_locale">
+          <select id="li_locale">
+            <option value="zh-CN"><%= I18n.t("string.zhongwen") %></option>
+            <option value="ko"><%= I18n.t("string.hanyu") %></option>
+          </select>
+        </li>
+ -->    </ul><!--title ends-->
     
     <div class="user_nav_box">
         <ul class="user_nav">
-            <li class="settings"><a href="/settings">系统设置</a></li>
+            <li class="settings"><a href="/settings"><%= I18n.t("string.system") %></a></li>
             <li><a href="#"><%= current_user.display_name %></a></li>
             <li><a href="#"><%= Time.now.strftime("%Y-%m-%d") %></a></li>
-            <li><%= link_to "安全退出", destroy_user_session_path, :method =>  "delete" %></a></li>
+            <li><%= link_to I18n.t("string.log_out"), destroy_user_session_path, :method =>  "delete" %></a></li>
         </ul><!--user_nav ends-->
     </div>
     
@@ -31,14 +37,14 @@
 <div class="tab_nav">
   <div class="tabs_links">
        <ul id="navigation">
-           <li id="home" ><a href="/">欢迎您 <%= current_user.display_name %></a></li>
-           <li id="news"><a href="/news?section=news">新闻</a></li>
-           <li id="calendars"><a href="/calendars">产品及培训日历</a></li>
-           <li id="best_practices"><a href="/best_practices">Best practice</a></li>
-           <li id="live_stories"><a href="/live_stories">生活故事<!--<span>4</span>--></a></li>
-           <li id="sales"><a href="/sales">销售人员提案</a></li>
-           <li id="bas"><a href="/bas">BA课题</a></li>
-           <li id="sis"><a href="/sis">Trainer&amp;Coach活动计划</a></li>
+           <li id="home" ><a href="/"><%= I18n.t("string.welcome") %> <%= current_user.display_name %></a></li>
+           <li id="news"><a href="/news?section=news"><%= I18n.t("string.news") %></a></li>
+           <li id="calendars"><a href="/calendars"><%= I18n.t("string.calendar") %></a></li>
+           <li id="best_practices"><a href="/best_practices"><%= I18n.t("string.best_practice") %></a></li>
+           <li id="live_stories"><a href="/live_stories"><%= I18n.t("string.live_story") %><!--<span>4</span>--></a></li>
+           <li id="sales"><a href="/sales"><%= I18n.t("string.sales") %></a></li>
+           <li id="bas"><a href="/bas"><%= I18n.t("string.ba") %></a></li>
+           <li id="sis"><a href="/sis"><%= I18n.t("string.action_plan") %></a></li>
        </ul>
     </div><!--tabs_links ends-->
 </div><!--tab_nav ends-->

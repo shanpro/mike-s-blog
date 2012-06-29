@@ -1,0 +1,36 @@
+<%= render partial: "shared/header"%>
+
+<div class="main">
+	<div class="content">
+		<div class="tab_content news group">
+			<%= render partial: "shared/left_nav" %>
+			<div class="right_main">
+				<div class="wizard">
+					<span class="btn_operate"><a href="/bp_cases/new">发表文章</a></span><a href="/bas"><%= @section.title %></a>&nbsp;&gt;&nbsp;<a href="/bp_cases">BP事例</a>&nbsp;&gt;&nbsp;<%= @bp_case.title %>
+				</div>
+
+				<h3 class="inner_tit"><span>发表人:<%= @bp_case.user.display_name %></span><%= @bp_case.title %></h3>
+
+				<div class="inner_main">
+					<div class="intr"><span>发布时间：<%= format_topic_time(@bp_case.created_at) %></span>品牌：<%= @bp_case.brand %></div>
+					<p class="inner_article"><%= @bp_case.content %></p>
+					<p>
+            <a href="<%= @bp_case.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @bp_case.img.url(:normal) %></a>
+          </p>
+					<div class="btn_review">
+						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div class="review_area">
+          <%= render partial: "shared/review", locals: {resource: @bp_case} %>
+				</div><!--review_area ends-->
+
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+		</div><!--news tab ends-->
+	</div>
+</div><!--main ends-->
+
+<%= render partial: "shared/popreview", locals: {resource: @bp_case} %>

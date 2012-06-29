@@ -3,16 +3,16 @@
 # ------------------------------------------------------------------------------
 
 # Set your full path to application.
-app_path = "/var/rails/ssep/current"
+app_path = "/home/XideSupport/www/ssep/current"
 
 # Set unicorn options
-worker_processes 1
+worker_processes 3
 preload_app true
 timeout 180
-listen "127.0.0.1:6001"
+listen "127.0.0.1:5000"
 
 # Spawn unicorn master worker for user apps (group: apps)
-user 'root', 'root'
+user 'XideSupport', 'XideSupport'
 
 # Fill path to your app
 working_directory app_path
