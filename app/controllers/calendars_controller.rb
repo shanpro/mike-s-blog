@@ -1,6 +1,5 @@
+# -*- encoding: utf-8 -*-
 class CalendarsController < ApplicationController
-  def index
-  end
 
   def show
     @cal = Calendar.find(params[:id])

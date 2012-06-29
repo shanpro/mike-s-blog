@@ -16,7 +16,7 @@ $(function(){
     selectHelper: true,
     select: function(start, end, allDay) {
         timetitle = (allDay && (start.toString() == end.toString())) ? ($.fullCalendar.formatDate(start, "yyyy-MM-dd")) : ($.fullCalendar.formatDate(start, "yyyy-MM-dd HH:mm:ss") + "~~" + $.fullCalendar.formatDate(end, "yyyy-MM-dd HH:mm:ss"))
-        var wbox = $("<div id='img_s'><img src='/assets/wait.gif' /></div>").wBox({title:"事件"})
+        var wbox = $("<div id='img_s'><img src='/assets/loading.gif' /></div>").wBox({title:"事件"})
         wbox.showBox()
         $.get("/calendars/form_box", function(data){
           $("#img_s").replaceWith(data)

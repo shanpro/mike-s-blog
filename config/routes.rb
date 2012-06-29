@@ -9,6 +9,8 @@ Ssep::Application.routes.draw do
   resources "replies"
   resources "bas"
   resources "live_stories"
+  match "calendars/form_box" => "calendars#form_box", :via => :get
+  match "calendars/current_events" => "calendars#current_events", :via => :get, :format => :json
   resources "calendars"
   resources "best_practices"
   resources "sales"
@@ -19,8 +21,6 @@ Ssep::Application.routes.draw do
     get "recommend", to: "praises#recommend"
   end
 
-  match "calendars/form_box" => "calendars#form_box", :via => :get
-  match "calendars/current_events" => "calendars#current_events", :via => :get, :format => :json
 
   devise_for :admins, :controllers => { :sessions => 'magic_admin/sessions' }
 

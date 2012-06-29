@@ -25,6 +25,7 @@ group :development do
   gem "hirb"
   gem "rvm-capistrano"
   gem "capistrano-unicorn"
+  gem "thin"
 end
 
 gem 'unicorn'

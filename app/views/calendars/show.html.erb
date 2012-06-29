@@ -20,7 +20,7 @@
                 	<a href="#">产品及培训日历</a>&nbsp;&gt;&nbsp;<%= @cal.allday ? @cal.start.to_date : (@cal.start.to_s(:db) + "~~" + @cal.end.to_s(:db)) %>&nbsp;&gt;&nbsp;<%= @cal.title %>
                 </div>
                 
-                <h3 class="inner_tit"><span>发表人:Admin</span><%= @cal.title %></h3>
+                <h3 class="inner_tit"><span>发表人:<%= current_user.display_name %></span><%= @cal.title %></h3>
                 
                 <div class="inner_main">
                     <div class="intr"><span>发布时间：<%= @cal.created_at.to_s(:db) %></span>品牌：兰芝</div>
