@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629135905) do
+ActiveRecord::Schema.define(:version => 20120629135906) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
