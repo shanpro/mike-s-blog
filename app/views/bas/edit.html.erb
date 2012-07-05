@@ -5,7 +5,7 @@
       <%= render partial: "shared/left_nav" %>
       <div class="right_main">
         <div class="wizard">
-          <span class="btn_operate"><a href="/bas/new">发表文章</a><a href="/bas">返回上级</a></span><a href="/bas"><%= @section.title %></a>&nbsp;&gt;&nbsp;<%= @ba.section.title %>&nbsp;&gt;&nbsp;发表文章
+          <span class="btn_operate"><a href="/bas/new">发表文章</a></span><a href="/bas"><%= @section.title %></a>&nbsp;&gt;&nbsp;<%= @ba.section.title %>&nbsp;&gt;&nbsp;发表文章
         </div>
         <%= flash[:error] %>
         <%= form_for(@ba, html: {id: "form_main"}) do |f| %>

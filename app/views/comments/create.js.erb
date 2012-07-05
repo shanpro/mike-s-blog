@@ -1,5 +1,5 @@
 alert("回复成功!");
-$(".review_area").prepend("<div class='review'><p><%= @comment.content %>" +
+$(".review_area").prepend("<div class='review'><p><%= raw @comment.content %>" +
 	"</p><table class='review_intr' border='0' cellspacing='0' cellpadding='0'>" +
 	"<tr><td width='20%'>地区：<%= current_user.area %></td><td width='20%'>柜台：<%= current_user.counter %></td>" +
 	"<td width='20%'>BA:<%= current_user.user_ba %></td><td width='20%'>发布时间：<%= format_topic_time @comment.created_at %></td>" +

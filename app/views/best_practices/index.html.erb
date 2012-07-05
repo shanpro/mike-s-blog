@@ -5,7 +5,7 @@
       <%= render partial: "shared/left_nav" %>
       <div class="right_main">
         <div class="wizard">
-          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/best_practices?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
+          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/best_practices"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
         </div>
 
         <table class="info_list" cellspacing="0" cellpadding="0">
@@ -22,15 +22,15 @@
 
           <%- @best_practices.each do |best| %>
           <tr>
-            <td><%= link_to best.id, best_practices_path(best) %></a></td>
-            <td><%= link_to best.brand || "", best_practices_path(best) %></a></td>
+            <td><%= link_to best.id, best_practice_path(best) %></a></td>
+            <td><%= link_to best.brand || "", best_practice_path(best) %></a></td>
             <td><%= best.section.try(:title) %></td>
-            <td><%= link_to best.title, best_practices_path(best) %></a></td>
-            <td><%= link_to "#{best.view_count}/#{best.comments.count}", "#" %></td>
-            <td><%= format_topic_time best.updated_at %></td>
-            <td><%= best.user.try(:display_name) %></td>
+            <td><%= link_to best.title, best_practice_path(best) %></a></td>
+            <td><%= link_to "#{best.view_count}/#{best.comments.count}", best_practice_topic_logs_path(best) %></td>
+            <td><%= format_topic_time best.created_at %></td>
+            <td><%= best.user.try(:display_name) if best.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_best_practice_path(best)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_best_practice_path(best)) %>
               <%= link_to "查看", best_practice_path(best, :viewed => true) %>
             </td>
           </tr>

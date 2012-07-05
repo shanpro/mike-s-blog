@@ -9,13 +9,13 @@
 					<span class="btn_operate"><a href="/bp_cases/new">发表文章</a></span><a href="/bas"><%= @section.title %></a>&nbsp;&gt;&nbsp;<a href="/bp_cases">BP事例</a>&nbsp;&gt;&nbsp;<%= @bp_case.title %>
 				</div>
 
-				<h3 class="inner_tit"><span>发表人:<%= @bp_case.user.display_name %></span><%= @bp_case.title %></h3>
+				<h3 class="inner_tit"><span>发表人:<%= @bp_case.user.display_name if @bp_case.user %></span><%= @bp_case.title %></h3>
 
 				<div class="inner_main">
 					<div class="intr"><span>发布时间：<%= format_topic_time(@bp_case.created_at) %></span>品牌：<%= @bp_case.brand %></div>
-					<p class="inner_article"><%= @bp_case.content %></p>
+					<p class="inner_article"><%= raw @bp_case.content %></p>
 					<p>
-            <a href="<%= @bp_case.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @bp_case.img.url(:normal) %></a>
+						<%= show_img(@bp_case) %>
           </p>
 					<div class="btn_review">
 						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>

@@ -31,4 +31,10 @@ module ApplicationHelper
 			raw "&nbsp;&gt;&nbsp;" + Section.find_by_eng_name(controller_name).children.first.title			
 		end
 	end
+
+	def show_img(resource)
+		unless resource.img.url(:normal)== "/imgs/normal/missing.png"
+			raw("<a href='#{resource.img}' class='img_group' title='' rel='lightbox-tour'>#{image_tag resource.img.url(:normal)} </a>")
+		end
+	end
 end

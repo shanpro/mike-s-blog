@@ -1,6 +1,19 @@
 # -*- encoding: utf-8 -*-
 class PraisesController < ApplicationController
 	before_filter :praise_tree
+
+	before_filter only: [:show, :update, :destroy] do |controller|
+		controller.create_topic_log(
+			{
+				:user_id => current_user.id, 
+				:topic_id => params[:id],
+				:oper_type => params["action"],
+				:oper_controller => params["controller"]
+			}
+		)
+	end
+
+
 	def index
 		@praises = Praise.where(status: "1").page(params[:page]).per(params[:per_page])
 	end
@@ -16,12 +29,16 @@ class PraisesController < ApplicationController
 	end
 
 	def create
-		@praise = Praise.new(params[:praise])
-		if @praise.save
-			redirect_to "/praises"
+		if params[:praise][:status] == "2"
+			redirect_to action: "index"
 		else
-			flash[:error] = "发布失败， #{@praise.errors.messages.values.join(',')}"
-			redirect_to :back 
+			@praise = Praise.new(params[:praise])
+			if @praise.save
+				redirect_to "/praises"
+			else
+				flash[:error] = "发布失败， #{@praise.errors.messages.values.join(',')}"
+				redirect_to :back 
+			end
 		end
 	end
 
@@ -30,13 +47,17 @@ class PraisesController < ApplicationController
 	end
 
 	def update
-		@praise = Praise.find(params[:id])
-		if @praise.update_attributes(params[:praise])
-			redirect_to "/praises"
+		if params[:praise][:status] == "2"
+			redirect_to action: "index"
 		else
-			flash[:error] = "更新失败， #{@praise.errors.messages.values.join(',')}"
-			redirect_to :back
-		end		
+			@praise = Praise.find(params[:id])
+			if @praise.update_attributes(params[:praise])
+				redirect_to "/praises"
+			else
+				flash[:error] = "更新失败， #{@praise.errors.messages.values.join(',')}"
+				redirect_to :back
+			end		
+		end
 	end
 
 	def destroy

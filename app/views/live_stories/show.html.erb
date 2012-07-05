@@ -9,13 +9,13 @@
 					<span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/live_stories?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>&nbsp;&gt;&nbsp;<%= @live_story.title %>
 				</div>
 
-				<h3 class="inner_tit"><span>发表人:<%= @live_story.user.display_name %></span><%= @live_story.title %></h3>
+				<h3 class="inner_tit"><span>发表人:<%= @live_story.user.display_name if @live_story.user %></span><%= @live_story.title %></h3>
 
 				<div class="inner_main">
 					<div class="intr"><span>发布时间：<%= format_topic_time(@live_story.created_at) %></span>品牌：<%= @live_story.brand %></div>
-					<p class="inner_article"><%= @live_story.content %></p>
+					<p class="inner_article"><%= raw @live_story.content %></p>
 					<p>
-            <a href="<%= @live_story.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @live_story.img.url(:normal) %></a>
+						<%= show_img(@live_story) %>
           </p>
 					<div class="btn_review">
 						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>

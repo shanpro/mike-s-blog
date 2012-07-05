@@ -3,27 +3,48 @@ Ssep::Application.routes.draw do
 
   root :to => "home#index"
 
-  
-  resources "news"
+  get "home/change_language", to: "home#change_language"
+  resources "news" do
+    get "topic_logs"
+  end
   resources "comments"
   resources "replies"
-  resources "bas"
-  resources "live_stories"
+  resources "bas" do
+    get "topic_logs"
+  end
+  resources "live_stories" do
+    get "topic_logs"
+  end
+
   match "calendars/form_box" => "calendars#form_box", :via => :get
   match "calendars/current_events" => "calendars#current_events", :via => :get, :format => :json
+
   resources "calendars"
-  resources "best_practices"
-  resources "sales"
-  resources "sis"
+
+  resources "best_practices" do
+    get "topic_logs"
+  end
+  resources "sales" do
+    get "topic_logs"
+  end
+  resources "sis" do
+    get "topic_logs"
+  end
   resources "announcements"
-  resources "bp_cases"
-  resources "praises" do
-    get "recommend", to: "praises#recommend"
+
+  resources "bp_cases" do
+    get "topic_logs"
   end
 
 
-  devise_for :admins, :controllers => { :sessions => 'magic_admin/sessions' }
+  resources "praises" do
+    get "recommend", to: "praises#recommend"
+  end
+  
+  resources "products" do
+    get "topic_logs"
+  end
 
-  mount MagicAdmin::Engine => '/admin', :as => 'magic_admin'
-  mount MagicContent::Engine => "/admin/content", :as => "magic_content"  
+  resources "pos_boards"
+  resources "pos_firms"
 end

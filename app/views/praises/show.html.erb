@@ -8,9 +8,9 @@
 				<div class="wizard">
 					<span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/praises"><%= @section.title %></a>&nbsp;&gt;&nbsp;<a href="#">赞美格式</a>&nbsp;&gt;&nbsp;FROM<%= @praise.from %> TO <%= @praise.to %>
 				</div>
-				<h3 class="inner_tit"><span>发表人:<%= @praise.user.display_name %></span>FROM: <%= @praise.from %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TO: <%= @praise.to %></h3>
+				<h3 class="inner_tit"><span>发表人:<%= @praise.user.display_name if @praise.user%></span>FROM: <%= @praise.from %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TO: <%= @praise.to %></h3>
 				<div class="review">
-					<p><%= @praise.content %></p>
+					<p><%= raw @praise.content %></p>
 					<table class="review_intr" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="20%">地区：<%= @praise.user.area %></td>

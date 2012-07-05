@@ -19,12 +19,12 @@
                   </span>
                 	<a href="#">产品及培训日历</a>&nbsp;&gt;&nbsp;<%= @cal.allday ? @cal.start.to_date : (@cal.start.to_s(:db) + "~~" + @cal.end.to_s(:db)) %>&nbsp;&gt;&nbsp;<%= @cal.title %>
                 </div>
-                
+
                 <h3 class="inner_tit"><span>发表人:<%= current_user.display_name %></span><%= @cal.title %></h3>
-                
+
                 <div class="inner_main">
                     <div class="intr"><span>发布时间：<%= @cal.created_at.to_s(:db) %></span>品牌：兰芝</div>
-                    <p class="inner_article"><%= @cal.content %></p>
+                    <p class="inner_article"><%= raw @cal.content %></p>
                     <p>
                       <img src="<%= @cal.topic.img %>" alt="" />
                     </p>
@@ -33,7 +33,7 @@
                 <div class="review_area">
                     <%#= render partial: "shared/review" %>
                 </div><!--review_area ends-->
-                
+
                 <div class="page_bar btn_operate"><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></div>
             </div><!--right_main ends-->
             <div class="clear"></div>

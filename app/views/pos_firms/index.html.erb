@@ -1,0 +1,60 @@
+<%= render partial: "shared/posheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>区域分公司留言板</h2>
+        <ul>
+          <% Area.roots.each do |area| %>
+            <li><a href="/pos_firms?area_id=<%= area.id %>"><%= area.name %>留言板</a></li>
+          <%- end -%>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><%= link_to "发布留言", new_pos_firm_path %></span>
+        </div>
+
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="20%">区域</th>
+            <th width="10%">品牌</th>
+            <th width="30%">标题</th>
+            <th width="10%">阅览数/回复</th>
+            <th width="10%">发布时间</th>
+            <th width="10%">发布人</th>
+            <th class="border_rr" width="10%">操作</th>
+          </tr>
+
+          <%- @pos_firms.each do |pos_firm| -%>
+          <tr>
+            <td><%= link_to "#{pos_firm.area}销售部", pos_firm_path(pos_firm) %></a></td>
+            <td><%= link_to pos_firm.brand, pos_firm_path(pos_firm) %></a></td>
+            <td><%= link_to pos_firm.title, pos_firm_path(pos_firm) %></a></td>
+            <td><%= link_to "#{pos_firm.view_count}/#{pos_firm.pos_comments.count}","#" %></td>
+            <td><%= format_topic_time(pos_firm.created_at) %></td>
+            <td><%= pos_firm.user.display_name %></td>
+            <td class="btn_operate">
+              <!-- <a href="/pos_firms/new">编辑</a> -->
+              <%= link_to "查看", pos_firm_path(pos_firm) %>
+            </td>
+          </tr>
+          <%- end -%>
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @pos_firms %>
+            </td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->

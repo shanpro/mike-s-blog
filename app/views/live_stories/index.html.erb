@@ -22,15 +22,15 @@
 
           <%- @live_stories.each do |story| %>
           <tr>
-            <td><%= link_to story.id, live_stories_path(story) %></a></td>
-            <td><%= link_to story.brand || "", live_stories_path(story) %></a></td>
+            <td><%= link_to story.id, live_story_path(story) %></a></td>
+            <td><%= link_to story.brand || "", live_story_path(story) %></a></td>
             <td><%= story.section.try(:title) %></td>
-            <td><%= link_to story.title, live_stories_path(story) %></a></td>
-            <td><%= link_to "#{story.view_count}/#{story.comments.count}", "#" %></td>
+            <td><%= link_to story.title, live_story_path(story) %></a></td>
+            <td><%= link_to "#{story.view_count}/#{story.comments.count}", live_story_topic_logs_path(story) %></td>
             <td><%= format_topic_time story.updated_at %></td>
-            <td><%= story.user.try(:display_name) %></td>
+            <td><%= story.user.try(:display_name) if story.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_live_story_path(story)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_live_story_path(story)) %>
               <%= link_to "查看", live_story_path(story, :viewed => true) %>
             </td>
           </tr>

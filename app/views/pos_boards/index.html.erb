@@ -1,0 +1,62 @@
+<%= render partial: "shared/posheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>留言板</h2>
+        <ul>
+          <li><a href="/pos_boards?section=1">IT留言板</a></li>
+          <li><a href="/pos_boards?section=2">一般留言板</a></li>
+          <li><a href="/pos_boards?section=3">柜台建议留言板</a></li>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><%= link_to "发布留言", new_pos_board_path %></span>
+        </div>
+
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">编号</th>
+            <th width="10%">品牌</th>
+            <th width="10%">所属栏目</th>
+            <th width="30%">标题</th>
+            <th width="10%">阅览数/回复</th>
+            <th width="10%">发布时间</th>
+            <th width="10%">发布人</th>
+            <th class="border_rr" width="10%">操作</th>
+          </tr>
+
+          <%- @pos_boards.each do |pos_board| -%>
+          <tr>
+            <td><%= link_to pos_board.id, pos_board_path(pos_board) %></a></td>
+            <td><%= link_to pos_board.brand, pos_board_path(pos_board) %></a></td>
+            <td><%= pos_board.section %></td>
+            <td><%= link_to pos_board.title, pos_board_path(pos_board) %></a></td>
+            <td><%= link_to "#{pos_board.view_count}/#{pos_board.pos_comments.count}","#" %></td>
+            <td><%= format_topic_time(pos_board.created_at) %></td>
+            <td><%= pos_board.user.display_name %></td>
+            <td class="btn_operate">
+              <!-- <a href="/pos_boards/new">编辑</a> -->
+              <%= link_to "查看", pos_board_path(pos_board) %>
+            </td>
+          </tr>
+          <%- end -%>
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @pos_boards %>
+            </td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->

@@ -39,8 +39,8 @@ module Ssep
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.i18n.default_locale = 'zh-CN'  
-    # config.i18n.default_locale = 'ko'  
+    config.i18n.default_locale = 'zh-CN'
+    # config.i18n.default_locale = 'ko'
 
 
     # Use SQL instead of Active Record's schema dumper when creating the database.

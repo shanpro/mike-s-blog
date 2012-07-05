@@ -1,4 +1,4 @@
-<%= render partial: "shared/header"%>
+<%= render partial: "shared/posheader"%>
 
 <div class="main">
   <div class="content">
@@ -8,7 +8,6 @@
         <div class="wizard">
           <span class="btn_operate">
             <a href="/announcements/new">发表文章</a>
-            <a href="/announcements<%= Announcement.last ? "/#{Announcement.last.id}" : "" %>">返回上级</a>
           </span>
           <a href="/announcements">销售人员提案</a>
           &nbsp;&gt;&nbsp;销售发展公告&nbsp;&gt;&nbsp;发表文章
@@ -28,6 +27,12 @@
             <div class="review_txt">
               <label for="is_urgent">紧急公告</label>
               <input type="checkbox" name="announcement[is_urgent]" id="is_urgent" value ="1" style="float:none;" />
+            </div>
+            <div class="review_txt">
+              <label for="section_id">板块</label>
+              <select name="announcement[section_id]" id="announcement_section_id">
+                <%= options_for_select(Announcement::SECTION.invert, @announcement.section_id) %>
+              </select>
             </div>
           </div>
 

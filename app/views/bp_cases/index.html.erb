@@ -21,15 +21,15 @@
           </tr>
           <%- @bp_cases.each do |bp_case| %>
           <tr>
-            <td><%= link_to bp_case.id, bp_cases_path(bp_case) %></a></td>
-            <td><%= link_to bp_case.brand || "", bp_cases_path(bp_case) %></a></td>
+            <td><%= link_to bp_case.id, bp_case_path(bp_case) %></a></td>
+            <td><%= link_to bp_case.brand || "", bp_case_path(bp_case) %></a></td>
             <td><%= bp_case.section.try(:title) %></td>
-            <td><%= link_to bp_case.title, bp_cases_path(bp_case) %></a></td>
-            <td><%= link_to "#{bp_case.view_count}/#{bp_case.comments.count}", "#" %></td>
-            <td><%= format_topic_time bp_case.updated_at %></td>
-            <td><%= bp_case.user.try(:display_name) %></td>
+            <td><%= link_to bp_case.title, bp_case_path(bp_case) %></a></td>
+            <td><%= link_to "#{bp_case.view_count}/#{bp_case.comments.count}", bp_case_topic_logs_path(bp_case) %></td>
+            <td><%= format_topic_time bp_case.created_at %></td>
+            <td><%= bp_case.user.try(:display_name) if bp_case.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_bp_case_path(bp_case)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_bp_case_path(bp_case)) %>
               <%= link_to "查看", bp_case_path(bp_case, :viewed => true) %>
             </td>
           </tr>

@@ -1,9 +1,21 @@
 # -*- encoding: utf-8 -*-
 class SisController < ApplicationController
 	before_filter :load_tree
+
+	before_filter only: [:show, :update, :destroy] do |controller|
+		controller.create_topic_log(
+			{
+				:user_id => current_user.id, 
+				:topic_id => params[:id],
+				:oper_type => params["action"],
+				:oper_controller => params["controller"]
+			}
+		)
+	end
+
 	def index
 		@sis = Si.where(section_id: (params[:section] || @section.children.first.id), status: "1") \
-			.page(params[:page]).per(params[:per_page])
+		.page(params[:page]).per(params[:per_page])
 	end
 
 	def show
@@ -17,12 +29,16 @@ class SisController < ApplicationController
 	end
 
 	def create
-		@si = Si.new(params[:si])
-		if @si.save
-			redirect_to "/sis?section=#{@si.section_id}"
+		if params[:si][:status] == "2"
+			redirect_to action: "index"
 		else
-			flash[:error] = "发布失败， #{@si.errors.messages.values.join(',')}"
-			redirect_to :back 
+			@si = Si.new(params[:si])
+			if @si.save
+				redirect_to "/sis?section=#{@si.section_id}"
+			else
+				flash[:error] = "发布失败， #{@si.errors.messages.values.join(',')}"
+				redirect_to :back 
+			end
 		end
 	end
 
@@ -31,16 +47,26 @@ class SisController < ApplicationController
 	end
 
 	def update
-		@si = Si.find(params[:id])
-		if @si.update_attributes(params[:si])
-			redirect_to "/sis?section=#{@si.section_id}"
+		if params[:si][:status] == "2"
+			redirect_to action: "index"
 		else
-			flash[:error] = "更新失败， #{@si.errors.messages.values.join(',')}"
-			redirect_to :back
+			@si = Si.find(params[:id])
+			if @si.update_attributes(params[:si])
+				redirect_to "/sis?section=#{@si.section_id}"
+			else
+				flash[:error] = "更新失败， #{@si.errors.messages.values.join(',')}"
+				redirect_to :back
+			end
 		end		
 	end
 
 	def destroy
 		
 	end
+
+	def topic_logs
+		@si = Si.find(params[:si_id])
+		@topic_logs = @si.topic_logs.page(params[:page]).per(params[:per_page])
+	end
+
 end

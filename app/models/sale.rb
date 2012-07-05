@@ -5,9 +5,11 @@ class Sale < ActiveRecord::Base
 	has_many :comments, :foreign_key => "topic_id"
 	belongs_to :user
 	belongs_to :section
+	has_many :topic_logs, :foreign_key => "topic_id"
 
 	validates_presence_of :title, message: "标题不能为空"
 	validates_presence_of :content, message: "内容不能为空"
+	default_scope order("updated_at DESC")
 
 	paginates_per 10
 

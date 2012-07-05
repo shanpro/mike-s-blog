@@ -1,52 +1,51 @@
 <div class="top">
-    <ul class="title group">
-        <li class="def_gray cur_tit"><a href="/"><span>Laneige SSEP</span> Bank</a></li>
-        <li class="def_gray"><a href="/pos_sales">POS</a></li>
-        <li class="li_select">
-          <select id="li_select">
-            <option value="1" <%= "selected='selected'" if cookies["brand"].to_i == 1 %>>兰芝</option>
-            <option value="2" <%= "selected='selected'" if cookies["brand"].to_i == 2 %>>梦妆</option>
-            <option value="3" <%= "selected='selected'" if cookies["brand"].to_i == 3 %>>雪花秀</option>
-          </select>
-        </li>
-<!--         <li class="li_locale">
-          <select id="li_locale">
-            <option value="zh-CN"><%= I18n.t("string.zhongwen") %></option>
-            <option value="ko"><%= I18n.t("string.hanyu") %></option>
-          </select>
-        </li>
- -->    </ul><!--title ends-->
-    
-    <div class="user_nav_box">
-        <ul class="user_nav">
-            <li class="settings"><a href="/settings"><%= I18n.t("string.system") %></a></li>
-            <li><a href="#"><%= current_user.display_name %></a></li>
-            <li><a href="#"><%= Time.now.strftime("%Y-%m-%d") %></a></li>
-            <li><%= link_to I18n.t("string.log_out"), destroy_user_session_path, :method =>  "delete" %></a></li>
-        </ul><!--user_nav ends-->
-    </div>
-    
-    <div class="clear"></div>
-    
-    <form id="search">
+  <ul class="title group">
+    <li class="def_gray cur_tit"><a href="/"><span>Laneige SSEP</span> Bank</a></li>
+    <li class="def_gray"><a href="/announcements">POS</a></li>
+    <li class="li_select">
+      <select id="li_select">
+        <option value="1" <%= "selected='selected'" if cookies["brand"].to_i == 1 %>>兰芝</option>
+        <option value="2" <%= "selected='selected'" if cookies["brand"].to_i == 2 %>>梦妆</option>
+        <option value="3" <%= "selected='selected'" if cookies["brand"].to_i == 3 %>>雪花秀</option>
+      </select>
+    </li>
+    <li class="li_select">
+      <select id="li_language" name="locale">
+        <option class="chinese" value="zh-CN" <%= "selected=selected" if session[:locale] == "zh-CN" %>>中文</option>
+        <option class="korean" value="ko" <%= "selected=selected" if session[:locale] == "ko" %>>한국어</option>
+      </select>
+    </li>
+  </ul><!--title ends-->
+  <div class="user_nav_box">
+    <ul class="user_nav">
+      <!-- <li class="settings"><a href="#"><%= I18n.t("string.system") %></a></li> -->
+      <li><a href="#"><%= current_user.display_name %></a></li>
+      <li><a href="#"><%= Time.now.strftime("%Y-%m-%d") %></a></li>
+      <li><%= link_to I18n.t("string.log_out"), destroy_user_session_path, :method =>  "delete" %></a></li>
+    </ul><!--user_nav ends-->
+  </div>
+
+  <div class="clear"></div>
+<!--     <form id="search">
         <div class="search_txt"><input type="text" id="search_txt" placeholder="搜索内容" /></div>
         <input type="submit" value="" id="search_btn" />
-    </form>
+      </form> -->
+
 </div><!--top ends-->
 
 <div class="tab_nav">
   <div class="tabs_links">
-       <ul id="navigation">
-           <li id="home" ><a href="/"><%= I18n.t("string.welcome") %> <%= current_user.display_name %></a></li>
-           <li id="news"><a href="/news?section=news"><%= I18n.t("string.news") %></a></li>
-           <li id="calendars"><a href="/calendars"><%= I18n.t("string.calendar") %></a></li>
-           <li id="best_practices"><a href="/best_practices"><%= I18n.t("string.best_practice") %></a></li>
-           <li id="live_stories"><a href="/live_stories"><%= I18n.t("string.live_story") %><!--<span>4</span>--></a></li>
-           <li id="sales"><a href="/sales"><%= I18n.t("string.sales") %></a></li>
-           <li id="bas"><a href="/bas"><%= I18n.t("string.ba") %></a></li>
-           <li id="sis"><a href="/sis"><%= I18n.t("string.action_plan") %></a></li>
-       </ul>
-    </div><!--tabs_links ends-->
+   <ul id="navigation">
+     <li id="home" ><a href="/"><%= I18n.t("string.welcome") %> <%= current_user.display_name %></a></li>
+     <li id="news"><a href="/news?section=news"><%= I18n.t("string.news") %></a></li>
+     <li id="calendars"><a href="/calendars"><%= I18n.t("string.calendar") %></a></li>
+     <li id="best_practices"><a href="/best_practices"><%= I18n.t("string.best_practice") %></a></li>
+     <li id="live_stories"><a href="/live_stories"><%= I18n.t("string.live_story") %><!--<span>4</span>--></a></li>
+     <li id="sales"><a href="/sales"><%= I18n.t("string.sales") %></a></li>
+     <li id="bas"><a href="/bas"><%= I18n.t("string.ba") %></a></li>
+     <li id="sis"><a href="/sis"><%= I18n.t("string.action_plan") %></a></li>
+   </ul>
+ </div><!--tabs_links ends-->
 </div><!--tab_nav ends-->
 
 <script type="text/javascript">
@@ -59,4 +58,28 @@ $(function(){
     }
   })
 })
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  try {
+    //$("body select").msDropDown();
+    oHandler = $("#li_language,#li_select").msDropDown({
+      useSprite : 'sprite'
+    }).data("dd");
+    $("#ver").html($.msDropDown.version);
+  } catch(e) {
+    alert("Error: " + e.message);
+  }
+})
+$("#li_language").change(function(){
+  language = $(this).val();
+  $.get("/home/change_language",
+    {locale: language},
+    function(){
+      window.location.reload();
+    }
+  );
+});
 </script>

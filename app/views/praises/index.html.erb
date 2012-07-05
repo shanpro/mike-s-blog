@@ -20,11 +20,11 @@
 
           <%- @praises.each do |praise| %>
           <tr>
-            <td><%= link_to praise.id, praises_path(praise) %></a></td>
-            <td><%= link_to praise.from, praises_path(praise) %></a></td>
+            <td><%= link_to praise.id, praise_path(praise) %></a></td>
+            <td><%= link_to praise.from, praise_path(praise) %></a></td>
             <td><%= link_to praise.to, praise_path(praise) %></td>
             <td><%= format_topic_time praise.updated_at %></td>
-            <td><%= praise.user.try(:display_name) %></td>
+            <td><%= praise.user.try(:display_name) if praise.user %></td>
             <td class="btn_operate">
               <%#= link_to_if(current_user.news, "编辑", edit_praise_path(praise)) %>
               <%= link_to "查看", praise_path(praise) %>

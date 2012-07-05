@@ -1,6 +1,6 @@
 <%- resource.comments.each_with_index do |comment, index| -%>
 <div class="review">
-  <p><%= index + 1 %>楼：<%= comment.content %></p>
+  <p><%= index + 1 %>楼：<%= raw comment.content %></p>
   <table class="review_intr" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="20%">地区：<%= comment.user.area %></td>

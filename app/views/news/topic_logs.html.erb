@@ -1,0 +1,67 @@
+<%= render partial: "shared/header"%>
+<style type="text/css">
+#skin1 .inner_main,#skin2 .inner_main,#skin3 .inner_main{ border-bottom:none;}
+</style>
+<div class="main">
+	<div class="content">
+		<div class="tab_content news group">
+			<%= render partial: "left_nav" %>
+			<div class="right_main">
+				<div class="wizard">
+          <span class="btn_operate"><a href="/news/new?brand=<%= params[:brand] %>">发表文章</a></span><a href="/news?section=news">新闻</a><%= raw news_nav(params[:brand]) %>&nbsp;&gt;&nbsp;<%= @news.title %>
+				</div>
+
+				<h3 class="inner_tit">
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td><%= @news.user.counter %></td>
+							<td>发表人：<%= @news.user.display_name if @news.user %></td>
+							<td>浏览数：<%= @news.view_count %></td>
+							<td>回复数：<%= @news.comments.count %></td>
+						</tr>
+					</table>
+				</h3>
+
+				<div class="inner_main">
+					<div class="intr">
+						<table cellspacing="0" cellpadding="0">
+							<tr>
+								<td>品牌 ： <%= @news.user.brand %></td>
+								<td>柜台 ： <%= @news.user.counter %></td>
+								<td>BA ： <%= @news.user.user_ba %></td>
+								<td>发布时间 ： <%= format_topic_time(@news.created_at) %></td>
+							</tr>
+						</table>
+					</div>
+					<p class="inner_article"><%= @news.content %></p>
+					
+				</div>
+
+				<table class="info_list" cellspacing="0" cellpadding="0">
+					<tr>
+						<th class="border_rl" width="30%">用户</th>
+						<th width="30%">浏览时间</th>
+						<th class="border_rr" width="30%">动作</th>
+					</tr>
+
+					<% @topic_logs.each do |topic_log| %>
+					<tr>
+						<td><a href="#">BA:<%= topic_log.user.user_ba %></a></td>
+						<td><a href="#"><%= format_topic_time(topic_log.operated_at) %></a></td>
+						<td class="btn_operate"><%= TopicLog::OPER_TYPE[topic_log.operated_type] %></td>
+					</tr>
+					<%- end -%>
+					<tr>
+						<td class="page_bar btn_operate" colspan="8">
+							<%= paginate @topic_logs %>
+						</td>
+					</tr>
+				</table>
+
+				
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+		</div><!--news tab ends-->
+	</div>
+</div><!--main ends-->
+

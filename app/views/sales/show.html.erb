@@ -1,36 +1,36 @@
 <%= render partial: "shared/header"%>
 
 <div class="main">
-	<div class="content">
-		<div class="tab_content news group">
-			<%= render partial: "shared/left_nav" %>
-			<div class="right_main">
-				<div class="wizard">
-					<span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/sales?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>&nbsp;&gt;&nbsp;<%= @sale.title %>
-				</div>
+  <div class="content">
+    <div class="tab_content news group">
+      <%= render partial: "shared/left_nav" %>
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/sales"><%= @section.title %></a><%= ssep_nav(params[:section]) %>&nbsp;&gt;&nbsp;<%= @sale.title %>
+        </div>
 
-				<h3 class="inner_tit"><span>发表人:<%= @sale.user.display_name %></span><%= @sale.title %></h3>
+        <h3 class="inner_tit"><span>发表人:<%= @sale.user.display_name if @sale.user%></span><%= @sale.title %></h3>
 
-				<div class="inner_main">
-					<div class="intr"><span>发布时间：<%= format_topic_time(@sale.created_at) %></span>品牌：<%= @sale.brand %></div>
-					<p class="inner_article"><%= @sale.content %></p>
-					<p>
-						<a href="<%= @sale.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @sale.img.url(:normal) %></a>
+        <div class="inner_main">
+          <div class="intr"><span>发布时间：<%= format_topic_time(@sale.created_at) %></span>品牌：<%= @sale.brand %></div>
+          <p class="inner_article"><%= raw @sale.content %></p>
+          <p>
+            <%= show_img(@sale) %>
           </p>
-					<div class="btn_review">
-						<span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
-						<div class="clear"></div>
-					</div>
-				</div>
+          <div class="btn_review">
+            <span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
+            <div class="clear"></div>
+          </div>
+        </div>
 
-				<div class="review_area">
+        <div class="review_area">
           <%= render partial: "shared/review", locals: {resource: @sale} %>
-				</div><!--review_area ends-->
+        </div><!--review_area ends-->
 
-			</div><!--right_main ends-->
-			<div class="clear"></div>
-		</div><!--news tab ends-->
-	</div>
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
 </div><!--main ends-->
 
 <%= render partial: "shared/popreview", locals: {resource: @sale} %>

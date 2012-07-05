@@ -5,6 +5,8 @@ class Praise < ActiveRecord::Base
 	}
 	belongs_to :user
 	belongs_to :section
+	has_many :topic_logs, :foreign_key => "topic_id"
+	default_scope order("updated_at DESC")
 
 	paginates_per 10
 

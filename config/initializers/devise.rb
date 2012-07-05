@@ -221,4 +221,4 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
 end
-Devise.router_name = :main_app
+# Devise.router_name = :main_app

@@ -5,7 +5,7 @@
       <%= render partial: "shared/left_nav" %>
       <div class="right_main">
         <div class="wizard">
-          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/sis?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
+          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/sis"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
         </div>
 
         <table class="info_list" cellspacing="0" cellpadding="0">
@@ -22,15 +22,15 @@
 
           <%- @sis.each do |si| %>
           <tr>
-            <td><%= link_to si.id, sis_path(si) %></a></td>
-            <td><%= link_to si.brand || "", sis_path(si) %></a></td>
+            <td><%= link_to si.id, si_path(si) %></a></td>
+            <td><%= link_to si.brand || "", si_path(si) %></a></td>
             <td><%= si.section.try(:title) %></td>
-            <td><%= link_to si.title, sis_path(si) %></a></td>
-            <td><%= link_to "#{si.view_count}/#{si.comments.count}", "#" %></td>
-            <td><%= format_topic_time si.updated_at %></td>
-            <td><%= si.user.try(:display_name) %></td>
+            <td><%= link_to si.title, si_path(si) %></a></td>
+            <td><%= link_to "#{si.view_count}/#{si.comments.count}", si_topic_logs_path(si) %></td>
+            <td><%= format_topic_time si.created_at %></td>
+            <td><%= si.user.try(:display_name) if si.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_si_path(si)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_si_path(si)) %>
               <%= link_to "查看", si_path(si, :viewed => true) %>
             </td>
           </tr>

@@ -3,6 +3,16 @@ class User < ActiveRecord::Base
   has_many :news
   has_many :comments
   has_many :replies
+  has_many :topic_logs
+  has_many :bas
+  has_many :best_practices
+  has_many :bp_cases
+  has_many :live_stories
+  has_many :pos_boards
+  has_many :praises
+  has_many :products
+  has_many :sales
+  has_many :sis
 
   ROLES = {
     "admin"  => "管理员",

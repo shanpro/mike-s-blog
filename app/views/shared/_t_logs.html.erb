@@ -1,0 +1,20 @@
+<table class="info_list" cellspacing="0" cellpadding="0">
+	<tr>
+		<th class="border_rl" width="30%">用户</th>
+		<th width="30%">浏览时间</th>
+		<th class="border_rr" width="30%">动作</th>
+	</tr>
+
+	<% @topic_logs.each do |topic_log| %>
+	<tr>
+		<td><a href="#">BA:<%= topic_log.user.user_ba %></a></td>
+		<td><a href="#"><%= format_topic_time(topic_log.operated_at) %></a></td>
+		<td class="btn_operate"><%= TopicLog::OPER_TYPE[topic_log.operated_type] %></td>
+	</tr>
+	<%- end -%>
+	<tr>
+		<td class="page_bar btn_operate" colspan="8">
+			<%= paginate @topic_logs %>
+		</td>
+	</tr>
+</table>

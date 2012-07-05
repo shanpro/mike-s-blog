@@ -5,8 +5,8 @@ set :rvm_ruby_string, '1.9.3'        # Or whatever env you want it to run in.
 
 require 'bundler/capistrano'
 
- set :rvm_path, "/home/XideSupport/.rvm"
- set :rvm_bin_path, "/home/XideSupport/.rvm/bin"
+set :rvm_path, "/home/XideSupport/.rvm"
+set :rvm_bin_path, "/home/XideSupport/.rvm/bin"
 set :application, "ssep"
 
 set :rvm_trust_rvmrcs_flag, 1
@@ -14,7 +14,7 @@ set :normalize_asset_timestamps, false
 
 set :use_sudo, false
 set :scm, :git
-set :deploy_via, :remote_cache
+# set :deploy_via, :remote_cache
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true

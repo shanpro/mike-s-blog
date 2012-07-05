@@ -1,0 +1,44 @@
+<%= render partial: "shared/posheader"%>
+
+<div class="main">
+	<div class="content">
+		<div class="tab_content news group">
+      <div class="left_menu">
+        <h2>留言板</h2>
+        <ul>
+          <li><a href="/pos_boards?section=1">IT留言板</a></li>
+          <li><a href="/pos_boards?section=2">一般留言板</a></li>
+          <li><a href="/pos_boards?section=3">柜台建议留言板</a></li>
+        </ul>
+      </div><!--left_menu ends-->
+			<div class="right_main">
+				<div class="wizard">
+				</div>
+				<h3 class="inner_tit"><span>发表人:<%= @pos_board.user.display_name if @pos_board.user%></span><%= @pos_board.title %></h3>
+				<div class="review">
+					<p><%= raw @pos_board.content %></p>
+					<table class="review_intr" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="20%">地区：<%= @pos_board.user.area %></td>
+							<td width="20%">柜台：<%= @pos_board.user.counter %></td>
+							<td width="20%">BA:<%= @pos_board.user.user_ba %></td>
+							<td width="20%">发布时间：<%= format_topic_time @pos_board.created_at %></td>
+							<td width="20%" class="btn_operate">
+								<!-- <a class="clik_review" href="#">回复</a> -->
+							</td>
+						</tr>
+					</table>
+				</div><!--review ends-->
+
+				<div class="review_area story_main">
+					<%= render partial: "shared/pos_review", locals: {resource: @pos_board} %>
+
+				</div><!--review_area ends-->
+
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+		</div><!--news tab ends-->
+	</div>
+</div><!--main ends-->
+
+<%#= render partial: "shared/popreview", locals: {resource: @pos_board} %>

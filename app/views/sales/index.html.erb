@@ -22,15 +22,15 @@
 
           <%- @sales.each do |one_sales| %>
           <tr>
-            <td><%= link_to one_sales.id, sales_path(one_sales) %></a></td>
-            <td><%= link_to one_sales.brand || "", sales_path(one_sales) %></a></td>
+            <td><%= link_to one_sales.id, sale_path(one_sales) %></a></td>
+            <td><%= link_to one_sales.brand || "", sale_path(one_sales) %></a></td>
             <td><%= one_sales.section.try(:title) %></td>
-            <td><%= link_to one_sales.title, sales_path(one_sales) %></a></td>
-            <td><%= link_to "#{one_sales.view_count}/#{one_sales.comments.count}", "#" %></td>
-            <td><%= format_topic_time one_sales.updated_at %></td>
-            <td><%= one_sales.user.try(:display_name) %></td>
+            <td><%= link_to one_sales.title, sale_path(one_sales) %></a></td>
+            <td><%= link_to "#{one_sales.view_count}/#{one_sales.comments.count}", sale_topic_logs_path(one_sales) %></td>
+            <td><%= format_topic_time one_sales.created_at %></td>
+            <td><%= one_sales.user.try(:display_name) if one_sales.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_sale_path(one_sales)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_sale_path(one_sales)) %>
               <%= link_to "查看", sale_path(one_sales, :viewed => true) %>
             </td>
           </tr>

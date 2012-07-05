@@ -9,13 +9,13 @@
           <span class="btn_operate"><a href="/news/new?brand=<%= params[:brand] %>">发表文章</a></span><a href="/news?section=news">新闻</a><%= raw news_nav(params[:brand]) %>&nbsp;&gt;&nbsp;<%= @news.title %>
         </div>
 
-        <h3 class="inner_tit"><span>发表人:<%= @news.user.try(:display_name) %></span><%= @news.title %></h3>
+        <h3 class="inner_tit"><span>发表人:<%= @news.user.try(:display_name) if @news.user %></span><%= @news.title %></h3>
 
         <div class="inner_main">
           <div class="intr"><span>发布时间：<%= format_topic_time @news.updated_at %></span>品牌：<%= @news.brand %></div>
           <p class="inner_article"><%= @news.content %></p>
           <p>
-            <a href="<%= @news.img %>" class="img_group" title="" rel="lightbox-tour"><%= image_tag @news.img.url(:normal) %></a>
+            <%= show_img(@news) %>
           </p>
           <div class="btn_review">
             <span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>

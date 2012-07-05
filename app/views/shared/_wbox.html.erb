@@ -4,7 +4,7 @@
     <%= an.title %>
   </div>
   <div class="announcement_content">
-    <%= an.content %>
+    <%= raw an.content %>
   </div>
   <div class="announcement_right_down">
     <p>发布人：<%= an.user.try(:name) || "Admin" %></p>

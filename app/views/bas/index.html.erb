@@ -5,7 +5,7 @@
       <%= render partial: "shared/left_nav" %>
       <div class="right_main">
         <div class="wizard">
-          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/bas?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
+          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= @section.id %>">发表文章</a></span><a href="/bas"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
         </div>
 
         <table class="info_list" cellspacing="0" cellpadding="0">
@@ -22,15 +22,15 @@
 
           <%- @bas.each do |ba| %>
           <tr>
-            <td><%= link_to ba.id, bas_path(ba) %></a></td>
-            <td><%= link_to ba.brand || "", bas_path(ba) %></a></td>
+            <td><%= link_to ba.id, ba_path(ba) %></a></td>
+            <td><%= link_to ba.brand || "", ba_path(ba) %></a></td>
             <td><%= ba.section.try(:title) %></td>
-            <td><%= link_to ba.title, bas_path(ba) %></a></td>
-            <td><%= link_to "#{ba.view_count}/#{ba.comments.count}", "#" %></td>
-            <td><%= format_topic_time ba.updated_at %></td>
-            <td><%= ba.user.try(:display_name) %></td>
+            <td><%= link_to ba.title, ba_path(ba) %></a></td>
+            <td><%= link_to "#{ba.view_count}/#{ba.comments.count}", ba_topic_logs_path(ba) %></td>
+            <td><%= format_topic_time ba.created_at %></td>
+            <td><%= ba.user.try(:display_name) if ba.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_ba_path(ba)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_ba_path(ba)) %>
               <%= link_to "查看", ba_path(ba, :viewed => true) %>
             </td>
           </tr>

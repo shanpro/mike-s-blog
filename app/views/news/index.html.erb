@@ -7,7 +7,6 @@
         <div class="wizard">
           <span class="btn_operate"><a href="/news/new?brand=<%= params[:brand] %>">发表文章</a></span><a href="/news?section=news">新闻</a><%= raw news_nav(params[:brand]) %>
         </div>
-
         <table class="info_list" cellspacing="0" cellpadding="0">
           <tr>
             <th class="border_rl" width="10%">编号</th>
@@ -26,11 +25,11 @@
             <td><%= link_to one_news.brand || "", news_path(one_news, :brand => one_news.brand_id) %></a></td>
             <td><%= one_news.section.try(:title) %></td>
             <td><%= link_to one_news.title, news_path(one_news, :brand => one_news.brand_id) %></a></td>
-            <td><%= link_to "#{one_news.view_count}/#{one_news.comments.count}", "/news/#{one_news.id}" %></td>
+            <td><%= link_to "#{one_news.view_count}/#{one_news.comments.count}", news_topic_logs_path(one_news) %></td>
             <td><%= format_topic_time one_news.updated_at %></td>
-            <td><%= one_news.user.try(:display_name) %></td>
+            <td><%= one_news.user.try(:display_name) if one_news.user %></td>
             <td class="btn_operate">
-              <%= link_to_if(current_user.news, "编辑", edit_news_path(one_news)) %>
+              <%#= link_to_if(current_user.news, "编辑", edit_news_path(one_news)) %>
               <%= link_to "查看", news_path(one_news, :brand => one_news.brand_id, :viewed => true) %>
             </td>
           </tr>
