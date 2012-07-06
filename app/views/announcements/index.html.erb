@@ -30,10 +30,13 @@
             <td><%= format_topic_time announcement.created_at %></td>
             <td><%= announcement.user.try(:display_name) || "Admin" %></td>
             <td class="btn_operate">
-              <!--<a href="#">编辑</a>-->
-              <%#= link_to "查看", announcement %>
-              <%#= link_to "编辑", edit_announcement_path(announcement) %>
-              <%= link_to '删除', announcement, confirm: '确定删除?', method: :delete %>
+							<%- if current_user.is_admin? || announcement.user_id == current_user.id %>
+								<%= link_to "查看", announcement %>
+								<%= link_to "编辑", edit_announcement_path(announcement) %>
+								<%= link_to '删除', announcement, confirm: '确定删除?', method: :delete %>
+						  <% else %>
+								<%= link_to "查看", announcement %>
+							<% end %>
             </td>
           </tr>
           <%- end -%>

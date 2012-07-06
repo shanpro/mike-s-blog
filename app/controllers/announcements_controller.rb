@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 class AnnouncementsController < ApplicationController
   def index
-    @announcements = Announcement.where(section_id: params[:section]).page(params[:page]).per(params[:per_page])
+    @announcements = Announcement.where(section_id: params[:section] || 1).page(params[:page]).per(params[:per_page])
   end
 
   def new
