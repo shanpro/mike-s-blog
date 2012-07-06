@@ -11,7 +11,16 @@ $(function(){
       center: 'prevYear title nextYear',
       right: 'month,agendaWeek,agendaDay'
     },
-    buttonText: {prevYear: "上一年", nextYear: "下一年", today: "今天", month: "月", week: "周", day: "天"}, 
+    //buttonText: {prevYear: "上一年", nextYear: "下一年", today: "今天", month: "月", week: "周", day: "天"}, 
+    buttonText: window.buttonText, 
+		dayNames: window.daynames, 
+		dayNamesShort: window.daynames, 
+		//monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+		//monthNamesShort: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+		//dayNames: ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'],
+		//dayNamesShort: ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'],
+		//dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+		//dayNamesShort: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'], 
     selectable: true,
     selectHelper: true,
     select: function(start, end, allDay) {

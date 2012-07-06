@@ -381,3 +381,12 @@ zh-CN:
     upload_video: "上传视频"
     temp_save: "临时保存"
     quit_recommend: "取消推荐"
+  calendar:
+    buttonText:
+      prevYear: 上一年
+      nextYear: 下一年
+      today: 今天
+      month: 月
+      week: 周
+      day: 日
+    daynames: ['星期天','星期一','星期二','星期三','星期四','星期五','星期六']

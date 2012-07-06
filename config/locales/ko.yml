@@ -322,3 +322,12 @@ ko:
     upload_video: "동영상올리기"
     temp_save: "임시저장"
     quit_recommend: "추천취소"
+  calendar:
+    buttonText:
+      prevYear: 전년
+      nextYear: 내년후
+      today: 오늘
+      month: 월
+      week: 주
+      day: 일
+    daynames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일']
