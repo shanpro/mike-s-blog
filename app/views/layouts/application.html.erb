@@ -16,10 +16,6 @@
   <body id="skin<%= cookies["brand"] || current_user.brand_id %>">
 
     <%= yield %>
-		<script type="text/javascript">
-			window.buttonText = <%= I18n.t("calendar.buttonText").to_json.html_safe %>
-      window.daynames = <%= I18n.t("calendar.daynames").to_json.html_safe %>
-		</script>
     <%- if current_user.no_last_an? %>
       <script type="text/javascript">
         $(function(){

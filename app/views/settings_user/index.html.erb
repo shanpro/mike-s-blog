@@ -6,9 +6,9 @@
       <div class="left_menu">
         <h2>用户设置</h2>
         <ul>
-          <li><a href="#">兰芝</a></li>
-          <li><a href="#">梦妆</a></li>
-          <li><a href="#">雪花秀</a></li>
+          <li><a href="/settings_user?item=1">兰芝</a></li>
+          <li><a href="/settings_user?item=2">梦妆</a></li>
+          <li><a href="/settings_user?item=3">雪花秀</a></li>
         </ul>
       </div><!--left_menu ends-->
 
@@ -42,7 +42,11 @@
 
 
           <tr>
-            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @users %>
+            </td>
           </tr>
         </table>
 

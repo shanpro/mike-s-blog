@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   end
 
   def settings_user
-    @users = User.limit(10)
+    @users = User.where(brand_id: params[:item]).page(params[:page]).per(params[:per_page])
     render "/#{params[:action]}/index"
   end
 
