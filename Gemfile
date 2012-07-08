@@ -13,6 +13,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'awesome_print'
 
 group :development do
   gem "capistrano"
@@ -29,7 +30,7 @@ group :development do
 end
 
 group :production do
-  gem "ruby-oci8"
+  #gem "ruby-oci8"
 end
 
 gem 'unicorn'
@@ -45,6 +46,6 @@ gem "paperclip"
 
 gem "kaminari"
 
-gem "magic_admin", :git => "git@github.com:nioteam/magic_admin.git", :branch => "bootstrap"
-gem "magic_content", :git => "git@github.com:nioteam/magic_content.git"
+gem "magic_admin", :path => "./cache/magic_admin"
+gem "magic_content", :git => "./cache/magic_content"
 

@@ -49,10 +49,6 @@ class User < ActiveRecord::Base
   :url => "/system/:class/:attachment/:id_partition/:style/:id.:extension",
   :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:id.:extension"
 
-  def is_admin?
-    false
-  end
-
   def display_name
     name || login
   end

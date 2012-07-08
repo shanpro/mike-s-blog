@@ -26,16 +26,16 @@
             <th class="border_rr" width="10%">操作</th>
           </tr>
 
-          <%- (1..10).each do |index| %>
+          <%- @users.each do |user| %>
           <tr>
-            <td><a href="#"><%= index %></a></td>
-            <td><a href="#">admin</a></td>
+            <td><a href="#"><%= user.id %></a></td>
+						<td><a href="#"><%= user.name %></a></td>
             <td><img style="margin:10px;" src="<%= asset_path "hall_img.jpg" %>" alt="" /></td>
-            <td><a href="#">兰芝/梦妆</a></td>
-            <td>上海</td>
-            <td>管理员</td>
-            <td>2012-04-25</td>
-            <td>有效</td>
+						<td><a href="#"><%= User::BRAND[user.brand_id.to_s] %></a></td>
+						<td><%= user.area_id %></td>
+						<td><%= user.role_id %></td>
+						<td><%= user.created_at.to_date %></td>
+						<td><%= user.status %></td>
             <td class="btn_operate"><a href="#">编辑</a><a href="#">权限</a><a href="/settings_user">禁止</a></td>
           </tr>
           <%- end -%>

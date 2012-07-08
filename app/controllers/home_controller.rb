@@ -8,4 +8,21 @@ class HomeController < ApplicationController
   def change_language
   	render text: "ok"
   end
+
+  def settings
+    render "/#{params[:action]}/index"
+  end
+
+  def settings_user
+    @users = User.limit(10)
+    render "/#{params[:action]}/index"
+  end
+
+  def settings_area
+    render "/#{params[:action]}/index"
+  end
+  
+  def settings_limits
+    render "/#{params[:action]}/index"
+  end
 end

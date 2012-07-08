@@ -39,13 +39,9 @@
             <td><%= format_topic_time(pos_board.created_at) %></td>
             <td><%= pos_board.user.display_name %></td>
             <td class="btn_operate">
-							<%- if current_user.is_admin? || pos_board.user_id == current_user.id %>
-								<%= link_to "查看", pos_board %>
-								<%= link_to "编辑", edit_pos_board_path(pos_board) %>
-								<%= link_to '删除', pos_board, confirm: '确定删除?', method: :delete %>
-						  <% else %>
-                <%= link_to "查看", pos_board %>
-							<% end %>
+							<%= link_to "查看", pos_board %>
+							<%= link_to "编辑", edit_pos_board_path(pos_board) %>
+							<%= link_to '删除', pos_board, confirm: '确定删除?', method: :delete %>
             </td>
           </tr>
           <%- end -%>
