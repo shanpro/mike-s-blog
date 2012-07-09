@@ -1,4 +1,3 @@
-require "json"
 class RolesController < InheritedResources::Base
   def index
     @role = Role.first
@@ -9,7 +8,6 @@ class RolesController < InheritedResources::Base
     @role = Role.find(params[:id])
     @role.update_attributes params[:role]
     redirect_to :action => :show, :id => @role.id
-    # 转换一下
   end
 
 
