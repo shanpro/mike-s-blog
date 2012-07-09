@@ -27,6 +27,8 @@ class RolesController < InheritedResources::Base
   end
 
   def destroy
-
+    @role = Role.find(params[:id])
+    @role.destroy
+    redirect_to :action => "index"
   end
 end
