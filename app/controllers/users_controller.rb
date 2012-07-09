@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    redirect_to :action => "edit", :id => @user.id
+    redirect_to :action => :index
   end
 
   def not

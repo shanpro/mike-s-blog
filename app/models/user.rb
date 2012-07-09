@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :sales
   has_many :sis
+  belongs_to :role
+
 
   ROLES = {
     "admin"  => "管理员",
@@ -53,9 +55,9 @@ class User < ActiveRecord::Base
     name || login
   end
 
-  def role
-    User::ROLES[role_id]
-  end
+  # def role
+  #   User::ROLES[role_id]
+  # end
 
   def brand
     User::BRAND[brand_id]

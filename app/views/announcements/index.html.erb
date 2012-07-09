@@ -31,8 +31,8 @@
             <td><%= announcement.user.try(:display_name) || "Admin" %></td>
             <td class="btn_operate">
 								<%= link_to("查看", announcement) if can?(:read, announcement) %>
-								<%= link_to("编辑", edit_announcement_path(announcement)) if can?(:read, announcement)%>
-								<%= link_to("删除", announcement, confirm: '确定删除?', method: :delete) if can?(:update, announcement)%>
+								<%= link_to("编辑", edit_announcement_path(announcement)) if can?(:update, announcement)%>
+								<%= link_to("删除", announcement, confirm: '确定删除?', method: :delete) if can?(:destroy, announcement)%>
             </td>
           </tr>
           <%- end -%>
