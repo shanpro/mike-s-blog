@@ -1,6 +1,78 @@
-<h1>Editing role</h1>
+<%= render partial: "shared/settingheader" %>
 
-<%= render 'form' %>
+<div class="main">
+  <div class="content">
+    <div class="tab_content" id="welcome">
+			<form id="form_main" method="post" action="/roles/<%= @role.id %>">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+        <input name="_method" type="hidden" value="put">
+    		<div class="inner_form">
+    			<div class="review_txt">
+						<span class="btn_operate">
+							<%= link_to "创建角色", new_role_path %>
+						</span>
+						<span class="btn_operate">
+							<%= link_to "返回列表", roles_path %>
+						</span>
+					  <a href="/settings" style="color:#5C5C5C;text-decoration:none;">系统设置</a>&nbsp;&gt;&nbsp;<a href="/roles" style="color:#5C5C5C;text-decoration:none;">权限设置</a>&nbsp;&gt;&nbsp;创建角色
+    			</div>
+					<div class="review_txt">
+						<div class="pos_checkbox fl">
+							<span style="margin-right:10px">角色名</span>
+							<input name= "role[name]" class="role_name" type="text" value="<%= @role.name %>">
+						</div>
+					</div>
+					<%- Role::AUTH.each do |key, value| %>
+						<div class="review_txt">
+							<div class="pos_checkbox fl zhu_ch">
+								<input class="zhu zhu_<%= key %>" type="checkbox">
+								<span><%= value %></span>
+								<div class="pos_checkbox fl cong cong_<%= key %>">
+									<input name="role[auth][<%= key %>][read]" class="cong cong_read" type="checkbox">
+									<span>查看</span>
+									<input name="role[auth][<%= key %>][destroy]" class="cong cong_destroy" type="checkbox">
+									<span>删除</span>
+									<input name="role[auth][<%= key %>][comment]" class="cong cong_comment" type="checkbox">
+									<span>回复</span>
+									<input name="role[auth][<%= key %>][create]" class="cong cong_create" type="checkbox">
+									<span>新增</span>
+								</div>
+							</div>
+						</div>
+					<% end %>
+    		</div>
 
-<%= link_to 'Show', @role %> |
-<%= link_to 'Back', roles_path %>
+				<div class="page_bar btn_all">
+					<input class="all_check" type="button" value="全选" />
+					<input class="all_clear" type="button" value="清除" />
+				</div>
+				<div class="page_bar">
+					<input type="submit" value="保存" />
+				</div>
+    	</form>
+    </div><!--welcome tab ends-->
+
+  </div>
+  <div class="clear"></div>
+</div><!--main ends-->
+<script>
+	window.zhu_cong_check(<%= @role.auth.html_safe %>);
+	$("input.all_check").click(function(){
+		$("input[type=checkbox]").attr("checked", "checked");
+		return false
+	})
+	$("input.all_clear").click(function(){
+		$("input[type=checkbox]").removeAttr("checked");
+		return false
+	})
+	$("input.cong").click(function(){
+		$(this).parents("div.zhu_ch").find("input.zhu").removeAttr("checked")
+	})
+	$("input.zhu").click(function(){
+		if($(this).attr("checked") == "checked"){
+			$(this).parent().find("div.cong input[type=checkbox]").attr("checked", "checked")
+		} else {
+			$(this).parent().find("div.cong input[type=checkbox]").removeAttr("checked")
+		}
+	})
+</script>

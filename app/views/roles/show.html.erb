@@ -8,6 +8,9 @@
     			<div class="review_txt">
     				<label>角色：</label>
 						<%= @role.name %>
+						<span class="btn_operate">
+							<a href="/roles">返回列表</a>
+						</span>
     			</div>
 					<%- @auth.each do |key, value| %>
 						<div class="review_txt">
@@ -25,8 +28,7 @@
     		</div>
 
 				<div class="page_bar">
-					<%= link_to "重新编辑", roles_path %>
-					<%= link_to "查看列表", roles_path %>
+					<%= link_to "返回列表", roles_path %>
 				</div>
     	</form>
     </div><!--welcome tab ends-->

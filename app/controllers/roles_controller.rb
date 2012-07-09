@@ -1,6 +1,6 @@
 class RolesController < InheritedResources::Base
   def index
-    @role = Role.first
+    @roles = Role.page(params[:page]).per(params[:per_page])
   end
 
   def update
@@ -22,8 +22,11 @@ class RolesController < InheritedResources::Base
     redirect_to :action => "show", :id => @role.id
   end
 
-  def auth
-    render :json => Role.find_by_id(params[:role_id]).try(:auth)
+  def edit
+    @role = Role.find(params[:id])
   end
 
+  def destroy
+
+  end
 end
