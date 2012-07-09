@@ -1,0 +1,28 @@
+<%= render partial: "shared/settingheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+
+      <div class="right_main">
+        <div class="wizard">
+					<span class="btn_operate"><a href="/roles">返回列表</a></span><a href="/settings">系统设置</a>&nbsp;&gt;&nbsp;<a href="/roles">权限设置</a>&nbsp;&gt;&nbsp;创建角色
+        </div>
+
+        <form id="form_main" action="/roles" method="post">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+          <div class="inner_form">
+            <div class="review_txt"><label>角色名：</label><input name="role[name]" type="text" ></div>
+						<div class="review_txt"><label>权  限：</label><span>默认全部</span></div>
+          </div>
+
+					<div class="page_bar">
+						<input type="submit" value="保存" />
+						<!-- <input type="submit" value="关闭" /> -->
+					</div>
+        </form>
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
+</div><!--main ends-->

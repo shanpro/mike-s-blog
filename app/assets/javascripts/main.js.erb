@@ -1,4 +1,15 @@
 //skin change================================
+window.zhu_cong_check = function(obj){
+	$("input[type=checkbox]").removeAttr("checked");
+	$.each(obj, function(key, value){
+		if(value.length == 4){
+		  $("input.zhu_" + key).attr("checked", "checked")
+		}
+		$(value).each(function(index, item){
+			$("div.cong_" + key + " input.cong_"+item).attr("checked", "checked")
+		})
+	});
+}
 
  $(function option_change(){
  	var $num = $("select#li_select option:selected").val();

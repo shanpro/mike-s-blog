@@ -13,11 +13,6 @@ class HomeController < ApplicationController
     render "/#{params[:action]}/index"
   end
 
-  def settings_user
-    @users = User.where(brand_id: params[:item]).page(params[:page]).per(params[:per_page])
-    render "/#{params[:action]}/index"
-  end
-
   def settings_area
     render "/#{params[:action]}/index"
   end

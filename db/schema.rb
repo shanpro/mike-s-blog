@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703054655) do
+ActiveRecord::Schema.define(:version => 20120708143431) do
 
   create_table "admin_profiles", :force => true do |t|
     t.integer  "admin_id"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(:version => 20120703054655) do
   end
 
   create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.string   "lft"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -319,6 +322,13 @@ ActiveRecord::Schema.define(:version => 20120703054655) do
     t.datetime "img_updated_at"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.string   "auth"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "sections", :force => true do |t|
