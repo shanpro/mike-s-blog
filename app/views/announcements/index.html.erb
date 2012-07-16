@@ -1,0 +1,55 @@
+<%= render partial: "shared/posheader" %>
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <%= render partial: "left_nav" %>
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/announcements/new">发表公告</a></span>
+        </div>
+
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">编号</th>
+            <th width="10%">标题</th>
+            <th width="10%">内容</th>
+            <th width="25%">是否紧急</th>
+            <th width="10%">是否发布</th>
+            <th width="10%">发布时间</th>
+            <th width="10%">发布人</th>
+            <th class="border_rr" width="15%">操作</th>
+          </tr>
+
+          <%- @announcements.each do |announcement| %>
+          <tr>
+            <td><%= link_to announcement.id, announcement %></td>
+            <td><%= link_to announcement.title, announcement %></td>
+            <td><%= link_to truncate(announcement.content, :length => 50), announcement %></td>
+            <td><%= link_to announcement.is_urgent ? "是" : "否", announcement %></td>
+            <td><%= link_to announcement.an_type ? "是" : "否", announcement %></td>
+            <td><%= format_topic_time announcement.created_at %></td>
+            <td><%= announcement.user.try(:display_name) || "Admin" %></td>
+            <td class="btn_operate">
+								<%= link_to("查看", announcement) if can?(:read, announcement) %>
+								<%= link_to("编辑", edit_announcement_path(announcement)) if can?(:update, announcement)%>
+								<%= link_to("删除", announcement, confirm: '确定删除?', method: :delete) if can?(:destroy, announcement)%>
+            </td>
+          </tr>
+          <%- end -%>
+
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @announcements %>
+            </td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
+</div><!--main ends-->
+<%= render partial: "shared/poppos" %>

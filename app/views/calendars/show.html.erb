@@ -14,25 +14,26 @@
 
             <div class="right_main">
             	<div class="wizard">
-                	<a href="#">calendar</a>&nbsp;&gt;&nbsp;2012-05-11&nbsp;&gt;&nbsp;本月明星产品-兰芝睡眠面膜
+                	<span class="btn_operate">
+                    <a href="/calendars">返回日历列表</a>
+                  </span>
+                	<a href="#">产品及培训日历</a>&nbsp;&gt;&nbsp;<%= @cal.allday ? @cal.start.to_date : (@cal.start.to_s(:db) + "~~" + @cal.end.to_s(:db)) %>&nbsp;&gt;&nbsp;<%= @cal.title %>
                 </div>
-                
-                <h3 class="inner_tit"><span>发表人:Admin</span>2012 培训季开始啦 ！！！</h3>
-                
+
+                <h3 class="inner_tit"><span>发表人:<%= current_user.display_name %></span><%= @cal.title %></h3>
+
                 <div class="inner_main">
-                    <div class="intr"><span>发布时间：2012-04-01 16:00</span>品牌：兰芝</div>
-                    <p class="inner_article">2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！2012 培训季开始啦 ！！！</p>
-                    <p><img src="<%= asset_path "hall_img.jpg" %>" alt="" /><img src="<%= asset_path "hall_img.jpg" %>" alt="" /></p>
-                    <!--<div class="btn_review">
-                        <span class="btn_operate"><a class="clik_review" href="#">回复</a></span>
-                        <div class="clear"></div>
-                    </div>-->
+                    <div class="intr"><span>发布时间：<%= @cal.created_at.to_s(:db) %></span>品牌：兰芝</div>
+                    <p class="inner_article"><%= raw @cal.content %></p>
+                    <p>
+                      <img src="<%= @cal.topic.img %>" alt="" />
+                    </p>
                 </div>
 
                 <div class="review_area">
-                    <%= render partial: "shared/review" %>
+                    <%#= render partial: "shared/review" %>
                 </div><!--review_area ends-->
-                
+
                 <div class="page_bar btn_operate"><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></div>
             </div><!--right_main ends-->
             <div class="clear"></div>

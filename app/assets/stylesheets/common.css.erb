@@ -32,24 +32,24 @@ textarea{overflow:auto;vertical-align:top;}
 /*search*/
 #search { position:absolute; top:80px; right:25px; }
 .search_txt { width:234px; height:34px; }
-#search_txt { width:185px; height:24px; margin:5px 15px; border:none; background:none; font:14px "SimSun"; color:#898989; *margin-top:4px; line-height:24px\9; _overflow:hidden;}
+#search_txt { width:185px; height:24px; margin:5px 15px; border:none; background:none; font:14px "SimSun",굴림; color:#898989; *margin-top:4px; line-height:24px\9; _overflow:hidden;}
 #search_txt:focus{ outline:none; border:none;}
 #search_btn { position:absolute; top:11px; right:15px; height:13px; width:13px; background:none; background:url(<%= asset_path "btn_search_blue.png" %>) no-repeat; border:none; _overflow:hidden;}
 
 /*head title*/
-.top .title { float:left; width:636px;_width:626px; height:143px;padding:90px 0 0 0;}
-.top .title li { float:left; padding:5px 0 5px 45px; font:42px "Microsoft Yahei";}
+.top .title { float:left; min-width:695px;_width:675px; height:143px;padding:90px 0 0 0;}
+.top .title li { float:left; padding:5px 0 5px 45px; font:40px "Microsoft Yahei",굴림;}
 .def_gray { background:url(<%= asset_path "icon_blue.png" %>) no-repeat 25px -22px;_background-position:25px -27px; }
 .top .title li a{text-decoration:none; color:#b6b6b6; }
-.top .title li.li_select{ padding-left:10px;}
+.top .title li.li_select{ padding-left:5px; padding-top:25px;}
 .top .title li select { font-size:12px; position:relative; top:-6px; /*top:30px\0; */*top:8px!important;_top:5px;}
 .top .title li select option{ padding:0 5px;}
 /*user_nav*/
-.user_nav_box{ float:right; width:604px;padding:110px 0 0 0px;}
+.user_nav_box{ float:right; min-width:545px;padding:110px 0 0 0px;background-position:right top;}
 .user_nav { float:right;min-width:340px; height:123px;}
 .user_nav li { float:left; padding:10px 5px; margin-right:5px; }
 .user_nav li.settings { padding-left:20px; }
-.user_nav li a { font:14px "SimSun"; text-decoration:none; display:block; padding:5px; }
+.user_nav li a { font:14px "SimSun",굴림; text-decoration:none; display:block; padding:5px; }
 
 /*tab content --------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*tab_links*/
@@ -57,7 +57,7 @@ textarea{overflow:auto;vertical-align:top;}
 .tabs_links { position:absolute; bottom:0px;_bottom:6px;/*border-bottom:1px solid #69c0e0; */padding-left:1%; width:99%;}
 .tabs_links ul { display:inline;}
 .tabs_links ul li { display:inline;}
-.tabs_links ul li a {float:left;/*width:135px;*/ height:30px; padding:6px 15px; text-decoration:none; text-align:center; text-shadow: 1px 1px 1px #fff; font:18px/30px "Microsoft Yahei"; margin-right:5px; -moz-border-radius:5px 5px 0px 0px; -webkit-border-radius:5px 5px 0px 0px; -khtml-border-radius:5px 5px 0px 0px; border-radius:5px 5px 0px 0px; position:relative; }
+.tabs_links ul li a {float:left;/*width:135px;*/ height:30px; padding:6px 15px; text-decoration:none; text-align:center; text-shadow: 1px 1px 1px #fff; font:18px/30px "Microsoft Yahei",돋움; margin-right:5px; -moz-border-radius:5px 5px 0px 0px; -webkit-border-radius:5px 5px 0px 0px; -khtml-border-radius:5px 5px 0px 0px; border-radius:5px 5px 0px 0px; position:relative; }
 /*.tabs_links ul li span { background-color:#6f91b1; padding:1px 5px 1.6px 5px; color:#FFFFFF; text-shadow: 0px 0px 0px #fff; border:1px solid #57748d; font-size:10px; position:absolute; -moz-border-radius:100px; -webkit-border-radius:100px; -khtml-border-radius:100px; border-radius:100px; bottom:20px; right:2px; }
 .tabs_links ul li.active a span { bottom:21px; }
 */
@@ -78,7 +78,7 @@ textarea{overflow:auto;vertical-align:top;}
 .con{ height:192px;}
 .con,.con_bp{ float:left; width:49%; margin-top:30px; margin-right:1%; padding-top:1px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px; _overflow:hidden;}
 .con.nomargin_r,.con_bp.nomargin_r{ float:right!important;}
-.con h2{ height:40px;font:14px/40px "Microsoft Yahei"; padding:0 20px; margin-bottom:30px;}
+.con h2{ height:40px;font:14px/40px "Microsoft Yahei",바탕; padding:0 20px; margin-bottom:30px;}
 img.con_img{margin-left:20px; display:inline; }
 .article{ float:right; height:119px; width:75%;}
 .article h3{ font:bold 13px/24px "Microsoft Yahei"; color:#000;}
@@ -86,25 +86,25 @@ img.con_img{margin-left:20px; display:inline; }
 
 
 /*.con_bp{ float:left; width:782px; margin:30px 37px 0 0; padding-top:1px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px; _overflow:hidden;}*/
-.con_bp h2{height:46px;font:14px/46px "Microsoft Yahei"; padding:0 40px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px;}
+.con_bp h2{height:46px;font:14px/46px "Microsoft Yahei",바탕; padding:0 40px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px;}
 .con_bp table{ width:95%; margin:0 auto;}
-.con_bp table td,.con_bp table th{ height:42px; text-align:center; vertical-align:middle; font:14px "Microsoft Yahei"; color:#000;}
+.con_bp table td,.con_bp table th{ height:42px; text-align:center; vertical-align:middle; font:14px "Microsoft Yahei",바탕; color:#000;}
 
-.btn_operate a{ padding:3px 8px;_padding:4px 8px 2px; display: inline-block; min-width:30px; margin:5px 4px; color:#fff!important; text-decoration:none; font:14px/24px "SimSun";}
+.btn_operate a{ padding:3px 8px;_padding:4px 8px 2px; display: inline-block; min-width:30px; margin:5px 4px; color:#fff!important; text-decoration:none; font:14px/24px "SimSun",굴림;}
 .btn_more{ float:right; padding:5px; text-decoration:none; color:#898989;font:12px "SimSun"; text-transform:uppercase;}
 .con_bp .btn_more{font:14px/34px "Microsoft Yahei"; position:relative; right:-30px;}
 /*news*/
 .news{ margin-top:65px;}
 .left_menu{ float:left; height:510px; width:18%;}
-.left_menu h2{ min-height:46px; font:28px/46px "Microsoft Yahei"; margin-bottom:24px;}
+.left_menu h2{ min-height:46px; font:28px/46px "Microsoft Yahei",바탕; margin-bottom:24px;}
 .left_menu ul{ height:420px;/*margin:0px 27px; */padding:20px 27px 0;}
 .left_menu ul li{ padding:5px 0px 5px 20px;}
-.left_menu ul li a{ text-decoration:none;font:18px/40px "Microsoft Yahei"; }
+.left_menu ul li a{ text-decoration:none;font:18px/40px "Microsoft Yahei",바탕; }
 .right_main{ float:right; position:relative; width:80%; min-height:555px;_height:555px;}
 .right_main .info_list{ width:100%;}
 .right_main .info_list tr{ cursor:pointer;}
-.right_main .info_list th{font:14px "Microsoft Yahei"; height:46px;}
-.right_main .info_list td{ height:45px; font:14px "SimSun"; color:#5c5c5c; text-align:center;}
+.right_main .info_list th{font:14px "Microsoft Yahei",바탕; height:46px;}
+.right_main .info_list td{ height:45px; font:14px "SimSun",굴림; color:#5c5c5c; text-align:center;}
 .right_main .info_list td a{color:#5c5c5c; text-decoration:none;}
 tr.noborder td{ border:0!important;}
 
@@ -113,7 +113,7 @@ tr.noborder td{ border:0!important;}
 .page_bar span a{ background:none!important;margin:0 5px;}
 .page_bar select{margin:0 40px 0 10px;}
 /*news inner*/
-.wizard{ position:absolute; width:97%; top:-42px; height:42px; font:14px/42px "Microsoft Yahei"; color:#5c5c5c; padding-left:3%;}
+.wizard{ position:absolute; width:97%; top:-42px; height:42px; font:14px/42px "Microsoft Yahei",굴림; color:#5c5c5c; padding-left:3%;}
 .wizard a{ color:#5c5c5c; text-decoration:none;}
 span.btn_operate{ float:right; /*margin-top:10px;*/}
 div.page_bar{ padding:10px 0;}
@@ -122,13 +122,13 @@ div.page_bar{ padding:10px 0;}
 .inner_tit table,.intr table{height:46px;width:100%;}
 .inner_tit table td,.intr table td{width:25%;}
 .inner_main{ padding:0 0 0 5%;}
-.intr{ font:14px/46px "Microsoft Yahei";}
+.intr{ font:14px/46px "Microsoft Yahei",굴림;}
 .intr span{ float: right;}
 .inner_main p{ font:12px/28px "SimSun";}
 .btn_review{margin:10px 0;}
 .inner_main p img{margin: 10px 20px 15px 0px;padding:1px;border:1px solid #dddddd;}
 
-.review{ padding:0 0 0 5%;font:12px/28px "SimSun";margin-bottom:30px;}
+.review{ padding:0 0 0 5%;font:12px/28px "SimSun",굴림;margin-bottom:30px;}
 .review p{line-height:24px;}
 .review p a{text-decoration:none;color:#5c5c5c;}
 .review .review_intr{ width:100%; margin:10px 0px;}
@@ -148,7 +148,7 @@ div.page_bar{ padding:10px 0;}
 #form_main .inner_form .publish_ba input.form_file{width:46%;}
 /*??++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 #form_main .review_txt{ overflow: hidden;_height:1%;margin:20px 0;font:14px/26px "Microsoft Yahei";}
-#form_main .inner_form label{float:left;width:10%;height:26px;font:14px/26px "Microsoft Yahei"; text-align: right;}
+#form_main .inner_form label{float:left;width:10%;height:26px;font:14px/26px "Microsoft Yahei",바탕; text-align: right;}
 #form_main .inner_form .publish_ba label{ width:20%;}
 /*#form_main .inner_form input,#form_main .inner_form textarea{float:left;width:520px;padding: 5px; background:#fff; outline:none;}
 #form_main .inner_form input.form_file{width:520px;width:535px\9;}*/
@@ -204,7 +204,10 @@ body#skin1{ background:url(<%= asset_path "footer_bg_blue_x.jpg" %>) repeat-x le
 
 #skin1 .top{background:url(<%= asset_path "top_bg_blue_x.jpg" %>) repeat-x 0 0;}
 #skin1 .top .title{background:url(<%= asset_path "top_bg_bule_l.jpg" %>) no-repeat 0 0;}
-#skin1 .top .title li.cur_tit a,#skin1 .top .title li.cur_tit span{ color:#5bb8d8;}
+#skin1 .top .title li.cur_tit a,
+#skin1 .top .title li.cur_tit span,
+#skin1 .top .title li a,
+#skin1 .dd .ddTitle span.ddTitleText{ color:#5bb8d8;}
 #skin1 .search_txt{ background:url(<%= asset_path "search_blue.png" %>) no-repeat;}
 #skin1 .user_nav_box { background:url(<%= asset_path "top_bg_blue_r.jpg" %>) no-repeat;}
 #skin1 .user_nav li a{ color:#5394b9;}
@@ -257,12 +260,16 @@ body#skin1{ background:url(<%= asset_path "footer_bg_blue_x.jpg" %>) repeat-x le
 #skin1 .pop_review form .review_txt textarea,#skin1 #form_main .inner_form input,#skin1 #form_main .inner_form textarea{ border:1px solid #5bb8d7;}
 #skin1 .pop_review form .review_btn input{ background:#81bfe8;}
 
+#skin1 .dd .ddChild a.selected,#skin1 .dd .ddChild a:hover{background-color:#c9edf9;}
+
 /*CSS Document*/
 body#skin2{ background:url(<%= asset_path "footer_bg_pink_x.jpg" %>) repeat-x left bottom;}/**/
 
 #skin2 .top{background:url(<%= asset_path "top_bg_pink_x.jpg" %>) repeat-x 0 0;}
 #skin2 .top .title{background:url(<%= asset_path "top_bg_pink_l.jpg" %>) no-repeat 0 0;}
-#skin2 .top .title li.cur_tit a{ color:#d24b79;}
+#skin2 .top .title li.cur_tit a,
+#skin2 .top .title li a,
+#skin2 .dd .ddTitle span.ddTitleText{ color:#d24b79;}
 #skin2 .top .title li.cur_tit span{ color:#ffffff;}
 #skin2 .search_txt{ background:url(<%= asset_path "search_pink.png" %>) no-repeat;}
 #skin2 .user_nav_box { background:url(<%= asset_path "top_bg_pink_r.jpg" %>) no-repeat;}
@@ -322,7 +329,10 @@ body#skin2{ background:url(<%= asset_path "footer_bg_pink_x.jpg" %>) repeat-x le
 body#skin3{ background:url(<%= asset_path "footer_bg_coffee_x.jpg" %>) repeat-x left bottom;}/**/
 #skin3 .top{background:url(<%= asset_path "top_bg_coffee_x.jpg" %>) repeat-x 0 0;}
 /*#skin3 .top .title{background:url(<%= asset_path "top_bg_coffee_l.jpg" %>) no-repeat 0 0;}*/
-#skin3 .top .title li.cur_tit a,#skin3 .top .title li.cur_tit span{ color:#84632a;}
+#skin3 .top .title li.cur_tit a,
+#skin3 .top .title li.cur_tit span,
+#skin3 .top .title li a,
+#skin3 .dd .ddTitle span.ddTitleText{ color:#84632a;}
 #skin3 .search_txt{ background:url(<%= asset_path "search_coffee.png" %>) no-repeat;}
 #skin3 .user_nav_box { background:url(<%= asset_path "top_bg_coffee_r.jpg" %>) no-repeat;}
 #skin3 .user_nav li a{ color:#674710;}

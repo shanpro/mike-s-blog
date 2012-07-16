@@ -1,0 +1,24 @@
+<h3 class="inner_tit"><span>用户：<%= current_user.display_name %></span><span>柜台：<%= current_user.counter %></span><span>BA：<%= current_user.user_ba %></span><span>地区：<%= current_user.area %></span></h3>
+
+<div class="inner_form">
+  <%= f.hidden_field :status, value: 1 %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :section_id, value: 16 %>
+  <div class="review_txt"><label>FROM：</label><%= f.text_field :from %></div>
+  <div class="review_txt"><label>TO：</label><%= f.text_field :to %></div>
+  <div class="review_txt"><label>内容：</label><%= f.text_area :content, :size => "10x20" %></div>
+</div>
+<div class="page_bar">
+  <%= f.submit "发布", class: "1"%>
+  <%= f.submit "临时保存", class: "0"%>
+  <%= f.submit "取消", class: "2" %>
+  <!-- <input type="button" value="推荐" /> -->
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $(".page_bar input[type=submit]").click(function(){
+      $("input#best_practice_status").val($(this).attr("class"))
+    })
+  });
+</script>

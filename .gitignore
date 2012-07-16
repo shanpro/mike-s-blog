@@ -1,0 +1,10 @@
+.rvmrc
+log/*
+Gemfile
+Gemfile.lock
+.DS_Store
+tmp/
+config/
+cache/
+public/system
+nbproject

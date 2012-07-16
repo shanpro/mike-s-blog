@@ -13,9 +13,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'awesome_print'
 
 group :development do
-  gem "capistrano", "2.11.2"
+  gem "capistrano"
   gem 'debugger'
   gem 'quiet_assets'
   gem 'bond'
@@ -23,7 +24,16 @@ group :development do
   gem "awesome_print"
   gem "map_by_method"
   gem "hirb"
+  gem "rvm-capistrano"
+  gem "capistrano-unicorn"
+  gem "thin"
 end
+
+group :production do
+  #gem "ruby-oci8"
+end
+
+gem 'unicorn'
 
 ##User register and login
 gem "devise"
@@ -34,10 +44,8 @@ gem "cancan"
 ##upload_file
 gem "paperclip"
 
-gem "magic_admin", :git => "git@github.com:nioteam/magic_admin.git", :branch => "bootstrap"
-gem "magic_content", :git => "git@github.com:nioteam/magic_content.git"
-#gem "rvm-capistrano"
-#gem "capistrano-unicorn"
-
-
 gem "kaminari"
+
+gem "magic_admin", :path => "./cache/magic_admin"
+gem "magic_content", :git => "./cache/magic_content"
+

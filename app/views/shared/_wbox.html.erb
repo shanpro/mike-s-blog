@@ -1,0 +1,14 @@
+<%- an = Announcement.find(current_user.an_id)  %>
+<div class="announcement_all">
+  <div class="announcement_title">
+    <%= an.title %>
+  </div>
+  <div class="announcement_content">
+    <%= raw an.content %>
+  </div>
+  <div class="announcement_right_down">
+    <p>发布人：<%= an.user.try(:name) || "Admin" %></p>
+    <p>发布时间：<%= an.created_at.to_s(:db) %></p>
+  </div>
+  <div class="clear"></div>
+</div>

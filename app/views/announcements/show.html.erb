@@ -1,0 +1,29 @@
+<%= render partial: "shared/posheader"%>
+
+<div class="main">
+	<div class="content">
+		<div class="tab_content news group">
+			<%= render partial: "left_nav" %>
+			<div class="right_main">
+				<div class="wizard">
+					<span class="btn_operate">
+            <a href="/announcements/new">发表文章</a>
+          </span>
+          <a href="/announcements">销售人员提案</a>
+          &nbsp;&gt;&nbsp;销售发展公告&nbsp;&gt;&nbsp;<%= @announcement.title %>
+				</div>
+
+        <h3 class="inner_tit"><span>发表人: <%= @announcement.user.try(:name) || "Admin" %></span><%= @announcement.title %></h3>
+
+				<div class="inner_main">
+					<p class="inner_article">
+            <%= @announcement.content %>
+          </p>
+				</div>
+
+				<!-- <div class="page_bar btn_operate"></div> -->
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+		</div><!--news tab ends-->
+	</div>
+</div><!--main ends-->

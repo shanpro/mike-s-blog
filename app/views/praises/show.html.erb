@@ -1,0 +1,42 @@
+<%= render partial: "shared/header"%>
+
+<div class="main">
+	<div class="content">
+		<div class="tab_content news group">
+			<%= render partial: "shared/left_nav" %>
+			<div class="right_main">
+				<div class="wizard">
+					<span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/praises"><%= @section.title %></a>&nbsp;&gt;&nbsp;<a href="#">赞美格式</a>&nbsp;&gt;&nbsp;FROM<%= @praise.from %> TO <%= @praise.to %>
+				</div>
+				<h3 class="inner_tit"><span>发表人:<%= @praise.user.display_name if @praise.user%></span>FROM: <%= @praise.from %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TO: <%= @praise.to %></h3>
+				<div class="review">
+					<p><%= raw @praise.content %></p>
+					<table class="review_intr" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="20%">地区：<%= @praise.user.area %></td>
+							<td width="20%">柜台：<%= @praise.user.counter %></td>
+							<td width="20%">BA:<%= @praise.user.user_ba %></td>
+							<td width="20%">发布时间：<%= format_topic_time @praise.created_at %></td>
+							<td width="20%" class="btn_operate"><a href="javascript:void(0);" id="recommend_me">推荐</a><a class="clik_review" href="#">回复</a></td>
+						</tr>
+					</table>
+				</div><!--review ends-->
+
+				<div class="review_area story_main">
+					<%= render partial: "shared/review", locals: {resource: @praise} %>
+
+				</div><!--review_area ends-->
+
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+		</div><!--news tab ends-->
+	</div>
+</div><!--main ends-->
+
+<%= render partial: "shared/popreview", locals: {resource: @praise} %>
+
+<script type="text/javascript">
+	$("#recommend_me").click(function(){
+		$.get("/praises/<%= @praise.id %>/recommend");
+	});
+</script>

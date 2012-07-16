@@ -4,25 +4,31 @@ class Ability
   def initialize(user)
     #https://github.com/ryanb/cancan/wiki/defining-abilities
     #https://github.com/ryanb/cancan/wiki/checking-abilities
-    case user.role_id
-    when "admin" #管理员 目前就Eric一人
-      can :manage, :all
-    when "ba" #全BA
-      can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
-      can [:read, :create, :update], Ba
-    when "common" #全公司内职员
-      can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
-      can [:create, :update], [News, LiveStory]
-    when "si" #SI部门
-      can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
-      can [:create, :update], [Calendar, Sales, Trainer, Coach]
-    when "sales" #销售部
-      can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
-      can [:create, :update], Sales
-    when "edu" #美容教育部
-      can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
-      can [:create, :update], Product    
-    end  
+    auth = JSON.parse(user.role.auth)
+    auth.each do |key, value|
+      can value.map(&:to_sym), key.constantize
+    end
+    # case user.role_id
+    # when "admin" #管理员 目前就Eric一人
+    #   can :manage, :all
+    # when "ba" #全BA
+    #   can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
+    #   can [:read, :create, :update], Ba
+    # when "common" #全公司内职员
+    #   can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
+    #   can [:create, :update], [News, LiveStory]
+    # when "si" #SI部门
+    #   can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
+    #   can [:create, :update], [Calendar, Sales, Trainer, Coach]
+    # when "sales" #销售部
+    #   can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
+    #   can [:create, :update], Sales
+    # when "edu" #美容教育部
+    #   can :read, [News, Calendar, LiveStory, Sales, Trainer, Coach, Product]
+    #   can [:create, :update], Product    
+    # end  
+    
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

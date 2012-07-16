@@ -1,0 +1,50 @@
+<%= render partial: "shared/header"%>
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <%= render partial: "left_nav" %>
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate">
+            <a href="/announcements/new">发表文章</a>
+          </span>
+          <a href="/announcements">销售人员提案</a>
+          &nbsp;&gt;&nbsp;销售发展公告&nbsp;&gt;&nbsp;修改文章
+        </div>
+        <form id="form_main" action="/announcements/<%= @announcement.id %>" method="post">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+          <input name="_method" type="hidden" value="put">
+          <input name="oper" id="oper" type="hidden" value="public" />
+          <div class="inner_form">
+            <div class="review_txt">
+              <label>标题：</label>
+              <input name="announcement[title]" type="text" value=<%= @announcement.title %>></input>
+            </div>
+            <div class="review_txt">
+              <label>内容：</label>
+              <textarea name="announcement[content]" rows="10" cols="30"><%= @announcement.content.to_s %></textarea>
+            </div>
+            <div class="review_txt">
+              <label for="is_urgent">紧急公告</label>
+              <input type="checkbox" name="announcement[is_urgent]" id="is_urgent" <%= "checked=checked" if @announcement.is_urgent%> value ="1" style="float:none;" />
+            </div>
+          </div>
+
+          <div class="page_bar">
+            <input type="submit" class="public" value="发布" />
+            <input type="submit" class="snap"   value="临时保存" />
+            <input type="submit" class="cancel" value="取消" />
+          </div>
+        </form>
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
+</div><!--main ends-->
+<script type="text/javascript">
+  $(function(){
+    $(".page_bar input[type=submit]").click(function(){
+      $("input#oper").val($(this).attr("class"))
+    })
+  });
+</script>

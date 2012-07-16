@@ -1,0 +1,14 @@
+<div class="left_menu">
+	<h2><%= @section.title %></h2>
+	<ul>
+		<% @section.children.each do |child| %>
+			<% if child.eng_name.eql? "praise_format" %>
+				<li><a href="/praises"><%= child.title %></a></li>
+			<% elsif child.eng_name.eql? "bp_case" %>
+				<li><a href="/bp_cases?section=<%= child.id %>"><%= child.title %></a></li>
+			<% else %>
+				<li><a href="/<%= @section.eng_name %>?section=<%= child.id %>"><%= child.title %></a></li>
+			<%- end -%>
+		<%- end -%>
+	</ul>
+</div><!--left_menu ends-->

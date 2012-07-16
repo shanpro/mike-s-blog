@@ -28,10 +28,10 @@
                         <h2>名誉殿堂</h2>
                         <img class="con_img" src="<%= asset_path "hall_img.jpg" %>" alt="" />
                         <div class="article">
-                            <h3>恭喜爱茉莉集团获得化妆品最佳产品奖</h3>
-                            <p>平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例台优秀案例台优秀案例台优秀案例台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例台优秀案例台优秀案例台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太</p>
+                            <h3>我的专业+我对顾客的4心=成功的销售</h3>
+                            <p>这几天专柜正在搞活动，客流很大，大家也非常辛苦的在加班，我们都非常积极主动的站在柜外邀约顾客，这时一位女士把目光瞟向专柜，我忙拿着香装微笑的说:您好！欢迎光临兰芝。</p>
 
-                            <a class="btn_more" href="#">more</a>
+                            <a class="btn_more" href="/best_practices/2093?viewed=true">more</a>
                         </div>
                     </div><!--con tab ends-->
 
@@ -39,17 +39,16 @@
                         <h2>优秀事例</h2>
                         <img class="con_img" src="<%= asset_path "bp_img.jpg" %>" alt="" />
                         <div class="article">
-                            <h3>特别表扬上海太平洋柜台的BA们</h3>
-                            <p>平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例台优秀案例台优秀案例台优秀案例台优秀案例太平洋柜台优秀案例太平洋柜台优秀案例太平太</p>
-
-                            <a class="btn_more" href="#">more</a>
-                        </div>                    
+                            <h3>SSEP先苦后甜的感受---新世界司马海燕</h3>
+                            <p>总结：这笔单虽然不大，但我已经全部把SSEP的精髓都融入了，虽然有点小累，但我跟顾客都得到了感动，感谢我们的顾客，也感谢我们老师的教诲！</p>
+                            <a class="btn_more" href="/best_practices/2130?viewed=true">more</a>
+                        </div>
                     </div><!--con tab ends-->
                 </div>
 
-                <div class="group">    
+                <div class="group">
                     <div class="con_bp">
-                        <h2><a class="btn_more" href="#">更多</a>热点BP</h2>
+                        <h2><a class="btn_more" href="/best_practices?section=12">更多</a>热点BP</h2>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <th width="15%">编号</th>
@@ -59,13 +58,13 @@
                                 <th width="20%">操作</th>
                             </tr>
 
-                            <%- (1..4).each do |index| -%>
+                            <%- @topics1.each do |topic| -%>
                             <tr>
-                                <td><%= index %></td>
-                                <td>生活故事</td>
-                                <td>很高兴加入爱茉莉大家庭</td>
-                                <td>15</td>
-                                <td class="btn_operate"><!-- <a href="#">编辑</a> --><a href="#">查看</a></td>
+                                <td><%= topic.id %></td>
+                                <td>优秀BP</td>
+                                <td><%= topic.title %></td>
+                                <td><%= topic.view_count %></td>
+                                <td class="btn_operate"><!-- <a href="#">编辑</a> --><a href="/best_practices/<%= topic.id %>?viewed=true">查看</a></td>
                             </tr>
                             <%- end -%>
 
@@ -74,7 +73,7 @@
                     </div><!--con tab ends-->
 
                     <div class="con_bp nomargin_r">
-                        <h2><a class="btn_more" href="#">更多</a>推荐BP</h2>
+                        <h2><a class="btn_more" href="/best_practices?section=13">更多</a>推荐BP</h2>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <th width="15%">编号</th>
@@ -84,13 +83,13 @@
                                 <th width="20%">操作</th>
                             </tr>
 
-                            <%- (1..4).each do |index| -%>
+                            <%- @topics2.each do |topic| -%>
                             <tr>
-                                <td><%= index %></td>
-                                <td>生活故事</td>
-                                <td>很高兴加入爱茉莉大家庭</td>
-                                <td>15</td>
-                                <td class="btn_operate"><!-- <a href="#">编辑</a> --><a href="#">查看</a></td>
+                                <td><%= topic.id %></td>
+                                <td>优秀BP</td>
+                                <td><%= topic.title %></td>
+                                <td><%= topic.view_count %></td>
+                                <td class="btn_operate"><!-- <a href="#">编辑</a> --><a href="/best_practices/<%= topic.id %>?viewed=true">查看</a></td>
                             </tr>
                             <%- end -%>
 

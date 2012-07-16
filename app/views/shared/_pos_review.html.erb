@@ -1,0 +1,31 @@
+<%- resource.pos_comments.each_with_index do |comment, index| -%>
+<div class="review">
+  <p><%= index + 1 %>楼：<%= raw comment.content %></p>
+  <table class="review_intr" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="20%">地区：<%= comment.user.area %></td>
+      <td width="20%">柜台：<%= comment.user.counter %></td>
+      <td width="20%">BA:<%= comment.user.user_ba %></td>
+      <td width="20%">发布时间：<%= format_topic_time comment.created_at %></td>
+      <td width="20%" class="btn_operate">
+        <!-- <a class="clik_review" href="javascript:void(0);">回复</a> -->
+      </td>
+    </tr>
+  </table>
+  <% unless comment.replies.blank? %>
+  <div class="reply">
+    <% comment.replies.each do |reply| %>
+    <p>回复<%= index + 1 %>楼：<%= reply.content %></p>
+    <table class="review_intr" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="20%">地区：<%= reply.user.area %></td>
+        <td width="20%">柜台：<%= reply.user.counter %></td>
+        <td width="20%">BA:<%= reply.user.user_ba %></td>
+        <td width="20%">发布时间：<%= format_topic_time reply.created_at %></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+  <%- end -%>
+</div><!--review ends-->
+<%- end -%>

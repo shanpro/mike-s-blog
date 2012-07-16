@@ -1,0 +1,39 @@
+<%= render partial: "shared/settingheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content" id="welcome">
+    	<form id="form_main">
+    		<div class="inner_form">
+    			<div class="review_txt">
+    				<label>角色：</label>
+						<%= @role.name %>
+						<span class="btn_operate">
+							<a href="/roles">返回列表</a>
+						</span>
+    			</div>
+					<%- @auth.each do |key, value| %>
+						<div class="review_txt">
+							<div class="pos_checkbox fl">
+								<span><%= Role::AUTH[key]%></span>
+								<div class="pos_checkbox fl cong">
+									<span><%= "查看" if value.member?("read") %></span>
+									<span><%= "删除" if value.member?("destroy") %></span>
+									<span><%= "回复" if value.member?("comment") %></span>
+									<span><%= "新增" if value.member?("create") %></span>
+									<span><%= "编辑" if value.member?("edit") %></span>
+								</div>
+							</div>
+						</div>
+					<% end %>
+    		</div>
+
+				<div class="page_bar">
+					<%= link_to "返回列表", roles_path %>
+				</div>
+    	</form>
+    </div><!--welcome tab ends-->
+
+  </div>
+  <div class="clear"></div>
+</div><!--main ends-->

@@ -6,9 +6,9 @@
       <div class="left_menu">
         <h2>用户设置</h2>
         <ul>
-          <li><a href="#">兰芝</a></li>
-          <li><a href="#">梦妆</a></li>
-          <li><a href="#">雪花秀</a></li>
+          <li><a href="/settings_user?item=1">兰芝</a></li>
+          <li><a href="/settings_user?item=2">梦妆</a></li>
+          <li><a href="/settings_user?item=3">雪花秀</a></li>
         </ul>
       </div><!--left_menu ends-->
 
@@ -26,23 +26,27 @@
             <th class="border_rr" width="10%">操作</th>
           </tr>
 
-          <%- (1..10).each do |index| %>
+          <%- @users.each do |user| %>
           <tr>
-            <td><a href="#"><%= index %></a></td>
-            <td><a href="#">admin</a></td>
+            <td><a href="#"><%= user.id %></a></td>
+						<td><a href="#"><%= user.name %></a></td>
             <td><img style="margin:10px;" src="<%= asset_path "hall_img.jpg" %>" alt="" /></td>
-            <td><a href="#">兰芝/梦妆</a></td>
-            <td>上海</td>
-            <td>管理员</td>
-            <td>2012-04-25</td>
-            <td>有效</td>
+						<td><a href="#"><%= User::BRAND[user.brand_id.to_s] %></a></td>
+						<td><%= user.area_id %></td>
+						<td><%= user.role_id %></td>
+						<td><%= user.created_at.to_date %></td>
+						<td><%= user.status %></td>
             <td class="btn_operate"><a href="#">编辑</a><a href="#">权限</a><a href="/settings_user">禁止</a></td>
           </tr>
           <%- end -%>
 
 
           <tr>
-            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @users %>
+            </td>
           </tr>
         </table>
 

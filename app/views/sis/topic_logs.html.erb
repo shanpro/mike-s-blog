@@ -1,0 +1,48 @@
+<%= render partial: "shared/header"%>
+<style type="text/css">
+#skin1 .inner_main,#skin2 .inner_main,#skin3 .inner_main{ border-bottom:none;}
+</style>
+<div class="main">
+	<div class="content">
+		<div class="tab_content news group">
+			<%= render partial: "shared/left_nav" %>
+			<div class="right_main">
+				<div class="wizard">
+          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/bas"><%= @section.title %></a><%= ssep_nav(params[:section]) %>&nbsp;&gt;&nbsp;<%= @si.title %>
+				</div>
+
+				<h3 class="inner_tit">
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td><%= @si.user.counter %></td>
+							<td>发表人：<%= @si.user.display_name if @si.user %></td>
+							<td>浏览数：<%= @si.view_count %></td>
+							<td>回复数：<%= @si.comments.count %></td>
+						</tr>
+					</table>
+				</h3>
+
+				<div class="inner_main">
+					<div class="intr">
+						<table cellspacing="0" cellpadding="0">
+							<tr>
+								<td>品牌 ： <%= @si.user.brand %></td>
+								<td>柜台 ： <%= @si.user.counter %></td>
+								<td>BA ： <%= @si.user.user_ba %></td>
+								<td>发布时间 ： <%= format_topic_time(@si.created_at) %></td>
+							</tr>
+						</table>
+					</div>
+					<p class="inner_article"><%= @si.content %></p>
+
+				</div>
+
+				<%= render partial: "shared/t_logs", collection: @topic_logs %>
+
+			</div><!--right_main ends-->
+			<div class="clear"></div>
+
+		</div><!--news tab ends-->
+	</div>
+</div><!--main ends-->
+

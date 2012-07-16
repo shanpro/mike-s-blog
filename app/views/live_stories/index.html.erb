@@ -1,45 +1,46 @@
 <%= render partial: "shared/header" %>
-
 <div class="main">
   <div class="content">
     <div class="tab_content news group">
-      <div class="left_menu">
-        <h2>生活故事</h2>
-        <ul>
-          <li><a href="#">Free Talking</a></li>
-          <li><a href="#">赞美格式</a></li>
-          <li><a href="#">苦闷商量</a></li>
-        </ul>
-      </div><!--left_menu ends-->
-
+      <%= render partial: "shared/left_nav" %>
       <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/<%= @section.eng_name %>/new?section=<%= params[:section] %>">发表文章</a></span><a href="/live_stories?section=good_bp"><%= @section.title %></a><%= ssep_nav(params[:section]) %>
+        </div>
+
         <table class="info_list" cellspacing="0" cellpadding="0">
           <tr>
             <th class="border_rl" width="10%">编号</th>
             <th width="10%">品牌</th>
             <th width="10%">所属栏目</th>
-            <th width="30%">标题</th>
+            <th width="25%">标题</th>
             <th width="10%">阅览数/回复</th>
             <th width="10%">发布时间</th>
             <th width="10%">发布人</th>
-            <th class="border_rr" width="10%">操作</th>
+            <th class="border_rr" width="15%">操作</th>
           </tr>
 
-          <%- (1..10).each do |index| %>
+          <%- @live_stories.each do |story| %>
           <tr>
-            <td><a href="story_in.html"><%= index %></a></td>
-            <td><a href="story_in.html">兰芝</a></td>
-            <td>生活故事</td>
-            <td><a href="story_in.html">2012培训开始啦！！</a></td>
-            <td><%= link_to "15/2","/live_stories/1/comment" %></td>
-            <td>2012-04-25 16:00</td>
-            <td>Admin</td>
-            <td class="btn_operate"><!--<a href="#">编辑</a>--><a href="/live_stories/show1">查看</a></td>
+            <td><%= link_to story.id, live_story_path(story) %></a></td>
+            <td><%= link_to story.brand || "", live_story_path(story) %></a></td>
+            <td><%= story.section.try(:title) %></td>
+            <td><%= link_to story.title, live_story_path(story) %></a></td>
+            <td><%= link_to "#{story.view_count}/#{story.comments.count}", live_story_topic_logs_path(story) %></td>
+            <td><%= format_topic_time story.updated_at %></td>
+            <td><%= story.user.try(:display_name) if story.user %></td>
+            <td class="btn_operate">
+              <%#= link_to_if(current_user.news, "编辑", edit_live_story_path(story)) %>
+              <%= link_to "查看", live_story_path(story, :viewed => true) %>
+            </td>
           </tr>
           <%- end -%>
-
           <tr>
-            <td class="page_bar btn_operate" colspan="8">每页显示<select><option>10</option><option>20</option><option>30</option></select><a href="#">首页</a><a href="#">上一页</a><span><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></span><a href="#">下一页</a><a href="#">末页</a></td>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @live_stories %>
+            </td>
           </tr>
         </table>
 
@@ -49,3 +50,12 @@
 
   </div>
 </div><!--main ends-->
+
+<script type="text/javascript">
+  $(function(){
+    $("#will_paginate").change(function(){
+      per_page = this.value;
+      window.location.href="/live_stories?seciton=<%= params[:section] %>&per_page="+per_page;
+    });
+  });
+</script>

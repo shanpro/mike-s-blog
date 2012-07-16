@@ -1,0 +1,18 @@
+<%= render partial: "shared/header"%>
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <%= render partial: "shared/left_nav" %>
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/bp_cases/new">发表文章</a></span><a href="/bp_case"><%= @section.title %></a>&nbsp;&gt;&nbsp;发表文章
+        </div>
+        <%= flash[:error] %>
+        <%= form_for(@bp_case, html: {id: "form_main"}) do |f| %>
+          <%= render partial: "form", locals: {f: f} %>
+        <%- end -%>
+        </div><!--right_main ends-->
+        <div class="clear"></div>
+      </div><!--news tab ends-->
+    </div>
+</div><!--main ends-->

@@ -1,0 +1,43 @@
+<%= render partial: "shared/header"%>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>产品及培训日历</h2>
+        <ul>
+          <li><a href="/calendars">培训日历</a></li>
+          <li><a href="/products?section=9">产品论坛</a></li>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <div class="wizard">
+          <span class="btn_operate"><a href="/products/new?section=9">发表文章</a></span><a href="/calendars">产品及培训日历</a>&nbsp;&gt;&nbsp;<a href="/products">产品论坛</a>&nbsp;&gt;&nbsp;<%= @product.title %>
+        </div>
+
+        <h3 class="inner_tit"><span>发表人:<%= @product.user.display_name if @product.user %></span><%= @product.title %></h3>
+
+        <div class="inner_main">
+          <div class="intr"><span>发布时间：<%= format_topic_time(@product.created_at) %></span>品牌：<%= @product.brand %></div>
+          <p class="inner_article"><%= raw @product.content %></p>
+          <p>
+            <%= show_img(@product) %>
+          </p>
+          <div class="btn_review">
+            <span class="btn_operate"><%= link_to "回复","javascript:void(0)",:class=>"clik_review" %></span>
+            <div class="clear"></div>
+          </div>
+        </div>
+
+        <div class="review_area">
+          <%= render partial: "shared/review", locals: {resource: @product} %>
+        </div><!--review_area ends-->
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
+</div><!--main ends-->
+
+<%= render partial: "shared/popreview", locals: {resource: @product} %>

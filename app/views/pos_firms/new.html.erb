@@ -1,0 +1,35 @@
+<%= render partial: "shared/posheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+      <div class="left_menu">
+        <h2>区域分公司留言板</h2>
+        <ul>
+          <% Area.roots.each do |area| %>
+            <li><a href="/pos_firms?area_id=<%= area.id %>"><%= area.name %>留言板</a></li>
+          <%- end -%>
+        </ul>
+      </div><!--left_menu ends-->
+
+      <div class="right_main">
+        <div class="wizard">
+          <a href="/pos_boards">区域分公司留言板</a>&nbsp;&gt;&nbsp;发布留言
+        </div>
+
+        <%= form_for(@pos_firm, html:{id: "form_main"}) do |f| %>
+          <%= render :partial => "form", locals: {f: f} %>
+        <%- end -%>
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
+</div><!--main ends-->
+
+<script type="text/javascript">
+  $(function(){
+    $(".page_bar input[type=submit]").click(function(){
+      $("input#pos_firm_status").val($(this).attr("class"))
+    })
+  });
+</script>

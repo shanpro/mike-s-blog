@@ -1,42 +1,46 @@
-
 <div class="top">
-    <ul class="title group">
-        <li class="def_gray cur_tit"><a href="/"><span>Laneige SSEP</span> Bank</a></li>
-        <li class="def_gray"><a href="#">POS</a></li>
-        <li class="li_select">
-          <select id="li_select">
-            <option value="1">兰芝</option>
-            <option selected="selected" value="2">梦妆</option>
-            <option value="3">雪花秀</option>
-          </select>
-        </li>
-    </ul><!--title ends-->
-    
-    <div class="user_nav_box">
-        <ul class="user_nav">
-            <li class="settings"><a href="/settings">系统设置</a></li>
-            <li><a href="#">张三	</a></li>
-            <li><a href="#">2012-04-01</a></li>
-            <li><a href="#">安全退出</a></li>
-        </ul><!--user_nav ends-->
-    </div>
-    
-    <div class="clear"></div>
-    
-    <form id="search">
+  <ul class="title group">
+    <li class="def_gray cur_tit"><a href="/"><span>Laneige SSEP</span> Bank</a></li>
+    <li class="def_gray"><a href="/announcements">POS</a></li>
+    <li class="li_select">
+      <select id="li_select">
+        <option value="1" <%= "selected='selected'" if cookies["brand"].to_i == 1 %>>兰芝</option>
+        <option value="2" <%= "selected='selected'" if cookies["brand"].to_i == 2 %>>梦妆</option>
+        <option value="3" <%= "selected='selected'" if cookies["brand"].to_i == 3 %>>雪花秀</option>
+      </select>
+    </li>
+    <li class="li_select">
+      <select id="li_language" name="locale">
+        <option class="chinese" value="zh-CN" <%= "selected=selected" if session[:locale] == "zh-CN" %>>中文</option>
+        <option class="korean" value="ko" <%= "selected=selected" if session[:locale] == "ko" %>>한국어</option>
+      </select>
+    </li>
+  </ul><!--title ends-->
+  <div class="user_nav_box">
+    <ul class="user_nav">
+      <!-- <li class="settings"><a href="#"><%= I18n.t("string.system") %></a></li> -->
+      <li><a href="#"><%= current_user.display_name %></a></li>
+      <li><a href="#"><%= Time.now.strftime("%Y-%m-%d") %></a></li>
+      <li><%= link_to I18n.t("string.log_out"), destroy_user_session_path, :method =>  "delete" %></a></li>
+    </ul><!--user_nav ends-->
+  </div>
+
+  <div class="clear"></div>
+<!--     <form id="search">
         <div class="search_txt"><input type="text" id="search_txt" placeholder="搜索内容" /></div>
         <input type="submit" value="" id="search_btn" />
-    </form>
+      </form> -->
+
 </div><!--top ends-->
 
 <div class="tab_nav">
   <div class="tabs_links">
-       <ul id="navigation">
-           <li id="pos_sales" ><a href="/pos_sales">销售公告板</a></li>
-           <li id="pos_board"><a href="/pos_board">留言板</a></li>
-           <li id="pos_firm"><a href="/pos_firm">区域分公司留言板</a></li>
-       </ul>
-    </div><!--tabs_links ends-->
+   <ul id="navigation">
+     <li id="announcements" ><a href="/announcements">销售公告板</a></li>
+     <li id="pos_boards"><a href="/pos_boards?section=1">留言板</a></li>
+     <li id="pos_firms"><a href="/pos_firms?area=1">区域分公司留言板</a></li>
+   </ul>
+ </div><!--tabs_links ends-->
 </div><!--tab_nav ends-->
 
 <script type="text/javascript">
@@ -49,4 +53,27 @@ $(function(){
     }
   })
 })
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  try {
+    //$("body select").msDropDown();
+    oHandler = $("#li_language,#li_select").msDropDown({
+      useSprite : 'sprite'
+    }).data("dd");
+    $("#ver").html($.msDropDown.version);
+  } catch(e) {
+    alert("Error: " + e.message);
+  }
+})
+$("#li_language").change(function(){
+  language = $(this).val();
+  $.get("/home/change_language",
+    {locale: language},
+    function(){
+      window.location.reload();
+    }
+  );
+});
 </script>

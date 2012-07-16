@@ -1,0 +1,41 @@
+<h3 class="inner_tit"><span>用户：<%= current_user.display_name %></span><span>柜台：<%= current_user.counter %></span><span>BA：<%= current_user.user_ba %></span><span>地区：<%= current_user.area %></span></h3>
+
+<div class="inner_form">
+  <%= f.hidden_field :status, value: 1 %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :section_id, value: 21 %>
+  <div class="review_txt"><label>标题：</label><%= f.text_field :title %></div>
+  <div class="review_txt"><label>内容：</label><%= f.text_area :content, :size => "10x10" %></div>
+  <div class="review_txt">
+    <div class="publish_ba"><label>上传图片：</label><%= f.file_field :img, :class => "form_file" %><br />
+      <!-- <img src="<%#= asset_path "hall_img.jpg" %>" /> -->
+    </div>
+    <div class="publish_ba"><label>上传视频：</label><%= f.file_field :video, :class => "form_file" %><br />
+      <!-- <img src="<%#= asset_path "hall_img.jpg" %>" /> -->
+    </div>
+  </div>
+
+  <div class="review_txt">
+    <div class="publish_ba"><label>态度结果：</label><%= f.text_field :attitude_results %></div>
+    <div class="publish_ba"><label>销售结果：</label><%= f.text_field :sale_results %></div>
+  </div>
+
+  <div class="review_txt">
+    <label>品牌：</label>
+    <%= f.select :brand_id, options_for_select(User::BRAND.invert, @bp_case.brand_id) %>
+  </div>
+</div>
+<div class="page_bar">
+  <%= f.submit "发布", class: "1"%>
+  <%= f.submit "临时保存", class: "0"%>
+  <%= f.submit "取消", class: "2" %>
+  <!-- <input type="button" value="推荐" /> -->
+</div>
+
+<script type="text/javascript">
+$(function(){
+  $(".page_bar input[type=submit]").click(function(){
+    $("input#bp_case_status").val($(this).attr("class"))
+  })
+});
+</script>

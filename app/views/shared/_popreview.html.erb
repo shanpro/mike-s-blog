@@ -1,9 +1,18 @@
 <div class="popup_box">
 	<div class="pop_review">
-		<form>
-			<div class="review_txt"><label>回复：</label><textarea></textarea></div>
-			<div class="review_btn"><input class="close_btn" type="button" value="发布" /><input class="close_btn" type="button" value="取消" /></div>
-		</form>
+		<%= form_for(@comment, remote: true) do |f| %>
+			<div class="review_txt"><label>回复：</label>
+				<%= f.text_area :content %>
+			</div>
+			<div class="review_btn">
+				<%= f.hidden_field :section_id, value: resource.try(:section_id) %>
+				<%= f.hidden_field :topic_id, value: resource.id %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
+				<%= f.hidden_field :reply_id, value: "" %>
+				<%= f.submit "发布", class: "close_btn" %>
+				<input class="close_btn" type="button" value="取消" />
+			</div>
+		<%- end -%>
 	</div>
 </div>
 <div class="overlay" class="close_btn"></div>

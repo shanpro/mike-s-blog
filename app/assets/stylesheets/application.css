@@ -11,4 +11,6 @@
  *= require_self
  *= require common
  *= require fullcalendar
+ *= require wbox
+ *= require dd
 */

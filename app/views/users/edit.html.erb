@@ -1,0 +1,51 @@
+<%= render partial: "shared/settingheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+
+      <div class="right_main">
+        <div class="wizard">
+					<span class="btn_operate"><a href="/users">返回列表</a></span><a href="/settings">系统设置</a>&nbsp;&gt;&nbsp;<a href="/users">用户设置</a>&nbsp;&gt;&nbsp;<%= @user.name%>
+        </div>
+
+        <form id="form_main" action="/users/<%= @user.id %>" method="post">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+          <input name="_method" type="hidden" value="put">
+          <div class="inner_form">
+            <div class="review_txt"><label>用户名：</label><input name="user[name]" type="text" value=<%= @user.name %>></div>
+						<div class="review_txt"><label>账  号：</label><input name="user[login]" type="text" value=<%= @user.login %>></div>
+
+            <div class="review_txt">
+              <label>选择模版：</label>
+							<select name="user[brand_id]">
+							  <%= options_for_select(User::BRAND.invert, @user.brand_id)%>
+							</select>
+            </div>
+
+            <div class="review_txt">
+              <label>选择区域：</label>
+							<select name="user[area_id]">
+								<%= options_for_select(Area.all.map{|a| [a.name, a.id]}, @user.area_id)%>
+							</select>
+            </div>
+
+            <div class="review_txt">
+              <label>选择角色：</label>
+							<select name="user[role_id]">
+								<%= options_for_select(Role.all.map{|r| [r.name, r.id]}, @user.role_id)%>
+							</select>
+            </div>
+
+          </div>
+
+					<div class="page_bar">
+						<input type="submit" value="保存" />
+						<!-- <input type="submit" value="关闭" /> -->
+					</div>
+        </form>
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+  </div>
+</div><!--main ends-->

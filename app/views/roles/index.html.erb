@@ -1,0 +1,47 @@
+<%= render partial: "shared/settingheader" %>
+
+<div class="main">
+  <div class="content">
+    <div class="tab_content news group">
+
+      <div class="right_main">
+				<div class="review_txt">
+					<span class="btn_operate">
+						<%= link_to "创建角色", new_role_path %>
+					</span>
+				</div>
+        <table class="info_list" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="border_rl" width="10%">编号</th>
+            <th width="10%">角色名</th>
+            <th class="border_rr" width="10%">操作</th>
+          </tr>
+
+          <%- @roles.each do |role| %>
+          <tr>
+            <td><a href="#"><%= role.id %></a></td>
+						<td><a href="#"><%= role.name %></a></td>
+						<td class="btn_operate">
+							<%= link_to "查看", role_path(role) %>
+							<%= link_to "编辑", edit_role_path(role) %>
+						  <%= link_to "删除", role, confirm: '确定删除?', method: :delete %>
+						</td>
+          </tr>
+          <%- end -%>
+
+
+          <tr>
+            <td class="page_bar btn_operate" colspan="8">
+              每页显示
+              <%= ssep_paginate(params[:per_page]) %>
+              <%= paginate @roles %>
+            </td>
+          </tr>
+        </table>
+
+      </div><!--right_main ends-->
+      <div class="clear"></div>
+    </div><!--news tab ends-->
+
+  </div>
+</div><!--main ends-->
