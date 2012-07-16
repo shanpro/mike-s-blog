@@ -2,7 +2,7 @@
 window.zhu_cong_check = function(obj){
 	$("input[type=checkbox]").removeAttr("checked");
 	$.each(obj, function(key, value){
-		if(value.length == 4){
+		if(value.length == 5){
 		  $("input.zhu_" + key).attr("checked", "checked")
 		}
 		$(value).each(function(index, item){

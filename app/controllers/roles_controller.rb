@@ -17,7 +17,7 @@ class RolesController < InheritedResources::Base
   end
 
   def create
-    params[:role][:auth] = Hash[Role::AUTH.keys.map{|key, value| [key, ["read", "comment", "destroy", "create"]]}].to_json
+    params[:role][:auth] = Hash[params[:role][:auth].map{|key, value| [key, value.keys]}].to_json if params[:role][:auth]
     @role = Role.create(params[:role])
     redirect_to :action => "show", :id => @role.id
   end

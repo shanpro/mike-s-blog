@@ -18,9 +18,10 @@
 								<span><%= Role::AUTH[key]%></span>
 								<div class="pos_checkbox fl cong">
 									<span><%= "查看" if value.member?("read") %></span>
-									<span><%= "删除" if value.member?("read") %></span>
-									<span><%= "回复" if value.member?("read") %></span>
-									<span><%= "新增" if value.member?("read") %></span>
+									<span><%= "删除" if value.member?("destroy") %></span>
+									<span><%= "回复" if value.member?("comment") %></span>
+									<span><%= "新增" if value.member?("create") %></span>
+									<span><%= "编辑" if value.member?("edit") %></span>
 								</div>
 							</div>
 						</div>
